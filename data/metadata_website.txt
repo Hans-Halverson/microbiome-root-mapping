@@ -1,0 +1,891 @@
+sample	experiment	type	growth_stage	stage_VR	cultivar	block	stage_develop	tissue	tissue_age	depth	tissue 2
+endca	pot	soil	end	end_soil	c	1	end_soil	soil	NA	NA	soil
+endcb	pot	soil	end	end_soil	c	2	end_soil	soil	NA	NA	soil
+endcc	pot	soil	end	end_soil	c	3	end_soil	soil	NA	NA	soil
+endsa	pot	soil	end	end_soil	s	1	end_soil	soil	NA	NA	soil
+endsb	pot	soil	end	end_soil	s	2	end_soil	soil	NA	NA	soil
+endsc	pot	soil	end	end_soil	s	3	end_soil	soil	NA	NA	soil
+R1	pot	rhizo	VE.1	V	s	1	cotyl	Lat1	young	NA	lateral1
+R10	pot	rhizo	VE.1	V	c	1	cotyl	t4	young	NA	t4
+R100	pot	rhizo	VE.7	V	c	3	uni	Lat1	young	NA	lateral1
+R101	pot	rhizo	VE.7	V	c	3	uni	subcrown	young	NA	subcrown
+R102	pot	rhizo	VE.7	V	c	3	uni	below_subcrown	young	NA	tap2
+R103	pot	rhizo	V1	V	s	1	tri	tip	young	NA	tip
+R104	pot	rhizo	V1	V	s	1	tri	tap1	young	NA	subtip (taproot)
+R105	pot	rhizo	V1	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+R106	pot	rhizo	V1	V	s	1	tri	Lat1	woody	NA	lateral1
+R107	pot	rhizo	V1	V	s	1	tri	subcrown	woody	NA	subcrown
+R108	pot	rhizo	V1	V	s	1	tri	below_subcrown	woody	NA	tap2
+R109	pot	rhizo	V1	V	s	1	tri	nod	nod	NA	nodule
+R11	pot	rhizo	VE.1	V	s	2	cotyl	Lat1	young	NA	lateral1
+R110	pot	rhizo	V1	V	s	2	tri	tip	young	NA	tip
+R111	pot	rhizo	V1	V	s	2	tri	tap1	young	NA	subtip (taproot)
+R112	pot	rhizo	V1	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+R113	pot	rhizo	V1	V	s	2	tri	Lat1	woody	NA	lateral1
+R114	pot	rhizo	V1	V	s	2	tri	subcrown	woody	NA	subcrown
+R115	pot	rhizo	V1	V	s	2	tri	below_subcrown	woody	NA	tap2
+R116	pot	rhizo	V1	V	s	2	tri	nod	nod	NA	nodule
+R117	pot	rhizo	V1	V	s	3	tri	tip	young	NA	tip
+R118	pot	rhizo	V1	V	s	3	tri	tap1	young	NA	subtip (taproot)
+R119	pot	rhizo	V1	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+R120	pot	rhizo	V1	V	s	3	tri	Lat1	woody	NA	lateral1
+R121	pot	rhizo	V1	V	s	3	tri	subcrown	woody	NA	subcrown
+R122	pot	rhizo	V1	V	s	3	tri	below_subcrown	woody	NA	tap2
+R123	pot	rhizo	V1	V	s	3	tri	nod	nod	NA	nodule
+R124	pot	rhizo	V1	V	c	1	tri	tip	young	NA	tip
+R125	pot	rhizo	V1	V	c	1	tri	tap1	young	NA	subtip (taproot)
+R126	pot	rhizo	V1	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+R127	pot	rhizo	V1	V	c	1	tri	Lat1	woody	NA	lateral1
+R128	pot	rhizo	V1	V	c	1	tri	subcrown	woody	NA	subcrown
+R129	pot	rhizo	V1	V	c	1	tri	below_subcrown	woody	NA	tap2
+R13	pot	rhizo	VE.1	V	s	2	cotyl	t2	young	NA	t2
+R131	pot	rhizo	V1	V	c	2	tri	tip	young	NA	tip
+R133	pot	rhizo	V1	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+R134	pot	rhizo	V1	V	c	2	tri	Lat1	woody	NA	lateral1
+R135	pot	rhizo	V1	V	c	2	tri	subcrown	woody	NA	subcrown
+R137	pot	rhizo	V1	V	c	2	tri	nod	nod	NA	nodule
+R138	pot	rhizo	V1	V	c	3	tri	tip	young	NA	tip
+R139	pot	rhizo	V1	V	c	3	tri	tap1	young	NA	subtip (taproot)
+R14	pot	rhizo	VE.1	V	s	2	cotyl	t3	young	NA	t3
+R140	pot	rhizo	V1	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+R141	pot	rhizo	V1	V	c	3	tri	Lat1	woody	NA	lateral1
+R142	pot	rhizo	V1	V	c	3	tri	subcrown	woody	NA	subcrown
+R143	pot	rhizo	V1	V	c	3	tri	below_subcrown	woody	NA	tap2
+R144	pot	rhizo	V1	V	c	3	tri	nod	nod	NA	nodule
+R145	pot	rhizo	V3	V	s	1	tri	tip	young	NA	tip
+R146	pot	rhizo	V3	V	s	1	tri	tap1	young	NA	subtip (taproot)
+R147	pot	rhizo	V3	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+R148	pot	rhizo	V3	V	s	1	tri	Lat1	woody	NA	lateral1
+R149	pot	rhizo	V3	V	s	1	tri	subcrown	woody	NA	subcrown
+R15	pot	rhizo	VE.1	V	s	2	cotyl	t4	young	NA	t4
+R150	pot	rhizo	V3	V	s	1	tri	below_subcrown	woody	NA	tap2
+R151	pot	rhizo	V3	V	s	1	tri	nod	nod	NA	nodule
+R152	pot	rhizo	V3	V	s	2	tri	tip	young	NA	tip
+R153	pot	rhizo	V3	V	s	2	tri	tap1	young	NA	subtip (taproot)
+R154	pot	rhizo	V3	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+R155	pot	rhizo	V3	V	s	2	tri	Lat1	woody	NA	lateral1
+R156	pot	rhizo	V3	V	s	2	tri	subcrown	woody	NA	subcrown
+R157	pot	rhizo	V3	V	s	2	tri	below_subcrown	woody	NA	tap2
+R158	pot	rhizo	V3	V	s	2	tri	nod	nod	NA	nodule
+R159	pot	rhizo	V3	V	s	3	tri	tip	young	NA	tip
+R160	pot	rhizo	V3	V	s	3	tri	tap1	young	NA	subtip (taproot)
+R161a	pot	rhizo	V3	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+R162	pot	rhizo	V3	V	s	3	tri	Lat1	woody	NA	lateral1
+R163	pot	rhizo	V3	V	s	3	tri	subcrown	woody	NA	subcrown
+R164	pot	rhizo	V3	V	s	3	tri	below_subcrown	woody	NA	tap2
+R165	pot	rhizo	V3	V	s	3	tri	nod	nod	NA	nodule
+R166	pot	rhizo	V3	V	c	2	tri	tip	young	NA	tip
+R167	pot	rhizo	V3	V	c	2	tri	tap1	young	NA	subtip (taproot)
+R168	pot	rhizo	V3	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+R169	pot	rhizo	V3	V	c	2	tri	Lat1	woody	NA	lateral1
+R17	pot	rhizo	VE.1	V	c	2	cotyl	t1	young	NA	t1
+R170	pot	rhizo	V3	V	c	2	tri	subcrown	woody	NA	subcrown
+R171	pot	rhizo	V3	V	c	2	tri	below_subcrown	woody	NA	tap2
+R172	pot	rhizo	V3	V	c	2	tri	nod	nod	NA	nodule
+R173	pot	rhizo	V3	V	c	1	tri	tip	young	NA	tip
+R174	pot	rhizo	V3	V	c	1	tri	tap1	young	NA	subtip (taproot)
+R175	pot	rhizo	V3	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+R176	pot	rhizo	V3	V	c	1	tri	Lat1	woody	NA	lateral1
+R177	pot	rhizo	V3	V	c	1	tri	subcrown	woody	NA	subcrown
+R178	pot	rhizo	V3	V	c	1	tri	below_subcrown	woody	NA	tap2
+R179	pot	rhizo	V3	V	c	1	tri	nod	nod	NA	nodule
+R18	pot	rhizo	VE.1	V	c	2	cotyl	t2	young	NA	t2
+R180	pot	rhizo	V3	V	c	3	tri	tip	young	NA	tip
+R181	pot	rhizo	V3	V	c	3	tri	tap1	young	NA	subtip (taproot)
+R182	pot	rhizo	V3	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+R183	pot	rhizo	V3	V	c	3	tri	Lat1	woody	NA	lateral1
+R184	pot	rhizo	V3	V	c	3	tri	subcrown	woody	NA	subcrown
+R185	pot	rhizo	V3	V	c	3	tri	below_subcrown	woody	NA	tap2
+R186	pot	rhizo	V3	V	c	3	tri	nod	nod	NA	nodule
+R19	pot	rhizo	VE.1	V	c	2	cotyl	t3	young	NA	t3
+R194	pot	rhizo	V5	V	s	2	tri	tip	young	NA	tip
+R195	pot	rhizo	V5	V	s	2	tri	tap1	young	NA	subtip (taproot)
+R196	pot	rhizo	V5	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+R197	pot	rhizo	V5	V	s	2	tri	Lat1	woody	NA	lateral1
+R198	pot	rhizo	V5	V	s	2	tri	subcrown	woody	NA	subcrown
+R199	pot	rhizo	V5	V	s	2	tri	below_subcrown	woody	NA	tap2
+R2	pot	rhizo	VE.1	V	s	1	cotyl	t1	young	NA	t1
+R20	pot	rhizo	VE.1	V	c	2	cotyl	t4	young	NA	t4
+R200	pot	rhizo	V5	V	s	2	tri	nod	nod	NA	nodule
+R201	pot	rhizo	V5	V	c	2	tri	tip	young	NA	tip
+R202	pot	rhizo	V5	V	c	2	tri	tap1	young	NA	subtip (taproot)
+R203	pot	rhizo	V5	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+R204	pot	rhizo	V5	V	c	2	tri	Lat1	woody	NA	lateral1
+R205	pot	rhizo	V5	V	c	2	tri	subcrown	woody	NA	subcrown
+R206	pot	rhizo	V5	V	c	2	tri	below_subcrown	woody	NA	tap2
+R207	pot	rhizo	V5	V	c	2	tri	nod	nod	NA	nodule
+R208	pot	rhizo	V5	V	c	1	tri	tip	young	NA	tip
+R209	pot	rhizo	V5	V	c	1	tri	tap1	young	NA	subtip (taproot)
+R21	pot	rhizo	VE.1	V	s	3	cotyl	Lat1	young	NA	lateral1
+R210	pot	rhizo	V5	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+R211	pot	rhizo	V5	V	c	1	tri	Lat1	woody	NA	lateral1
+R212	pot	rhizo	V5	V	c	1	tri	subcrown	woody	NA	subcrown
+R213	pot	rhizo	V5	V	c	1	tri	below_subcrown	woody	NA	tap2
+R214	pot	rhizo	V5	V	c	1	tri	nod	nod	NA	nodule
+R215	pot	rhizo	V5	V	s	1	tri	tip	young	NA	tip
+R216	pot	rhizo	V5	V	s	1	tri	tap1	young	NA	subtip (taproot)
+R217	pot	rhizo	V5	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+R218	pot	rhizo	V5	V	s	1	tri	Lat1	woody	NA	lateral1
+R219	pot	rhizo	V5	V	s	1	tri	subcrown	woody	NA	subcrown
+R22	pot	rhizo	VE.1	V	s	3	cotyl	t1	young	NA	t1
+R220	pot	rhizo	V5	V	s	1	tri	below_subcrown	woody	NA	tap2
+R221	pot	rhizo	V5	V	s	1	tri	nod	nod	NA	nodule
+R222	pot	rhizo	V5	V	s	3	tri	tip	young	NA	tip
+R223	pot	rhizo	V5	V	s	3	tri	tap1	young	NA	subtip (taproot)
+R224	pot	rhizo	V5	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+R225	pot	rhizo	V5	V	s	3	tri	Lat1	woody	NA	lateral1
+R226	pot	rhizo	V5	V	s	3	tri	subcrown	woody	NA	subcrown
+R227	pot	rhizo	V5	V	s	3	tri	below_subcrown	woody	NA	tap2
+R228	pot	rhizo	V5	V	s	3	tri	nod	nod	NA	nodule
+R23	pot	rhizo	VE.1	V	s	3	cotyl	t2	young	NA	t2
+R236	pot	rhizo	V5	V	c	3	tri	tip	young	NA	tip
+R237	pot	rhizo	V5	V	c	3	tri	tap1	young	NA	subtip (taproot)
+R238	pot	rhizo	V5	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+R239	pot	rhizo	V5	V	c	3	tri	Lat1	woody	NA	lateral1
+R24	pot	rhizo	VE.1	V	s	3	cotyl	t3	young	NA	t3
+R240	pot	rhizo	V5	V	c	3	tri	subcrown	woody	NA	subcrown
+R241	pot	rhizo	V5	V	c	3	tri	below_subcrown	woody	NA	tap2
+R242	pot	rhizo	V5	V	c	3	tri	nod	nod	NA	nodule
+R243	pot	rhizo	R1	R	s	1	bloom	tip	young	NA	tip
+R244	pot	rhizo	R1	R	s	1	bloom	tap1	young	NA	subtip (taproot)
+R245	pot	rhizo	R1	R	s	1	bloom	adjtip	young	NA	subtip (lateral)
+R246	pot	rhizo	R1	R	s	1	bloom	Lat1	woody	NA	lateral1
+R247	pot	rhizo	R1	R	s	1	bloom	subcrown	woody	NA	subcrown
+R248	pot	rhizo	R1	R	s	1	bloom	below_subcrown	woody	NA	tap2
+R249	pot	rhizo	R1	R	s	1	bloom	nod	nod	NA	nodule
+R25	pot	rhizo	VE.1	V	s	3	cotyl	t4	young	NA	t4
+R250	pot	rhizo	R1	R	s	1	bloom	ter	young	NA	tertiary
+R251	pot	rhizo	R1	R	s	2	bloom	tip	young	NA	tip
+R252	pot	rhizo	R1	R	s	2	bloom	tap1	young	NA	subtip (taproot)
+R253	pot	rhizo	R1	R	s	2	bloom	adjtip	young	NA	subtip (lateral)
+R254	pot	rhizo	R1	R	s	2	bloom	Lat1	woody	NA	lateral1
+R255	pot	rhizo	R1	R	s	2	bloom	subcrown	woody	NA	subcrown
+R256	pot	rhizo	R1	R	s	2	bloom	below_subcrown	woody	NA	tap2
+R257	pot	rhizo	R1	R	s	2	bloom	nod	nod	NA	nodule
+R258	pot	rhizo	R1	R	s	2	bloom	ter	young	NA	tertiary
+R259	pot	rhizo	R1	R	s	3	bloom	tip	young	NA	tip
+R261	pot	rhizo	R1	R	s	3	bloom	adjtip	young	NA	subtip (lateral)
+R262	pot	rhizo	R1	R	s	3	bloom	Lat1	woody	NA	lateral1
+R263	pot	rhizo	R1	R	s	3	bloom	subcrown	woody	NA	subcrown
+R264	pot	rhizo	R1	R	s	3	bloom	below_subcrown	woody	NA	tap2
+R265	pot	rhizo	R1	R	s	3	bloom	nod	nod	NA	nodule
+R266	pot	rhizo	R1	R	s	3	bloom	ter	young	NA	tertiary
+R267	pot	rhizo	R2	R	s	3	adv_bloom	tip	young	NA	tip
+R268	pot	rhizo	R2	R	s	3	adv_bloom	tap1	young	NA	subtip (taproot)
+R269	pot	rhizo	R2	R	s	3	adv_bloom	adjtip	young	NA	subtip (lateral)
+R270	pot	rhizo	R2	R	s	3	adv_bloom	Lat1	woody	NA	lateral1
+R271	pot	rhizo	R2	R	s	3	adv_bloom	subcrown	woody	NA	subcrown
+R272	pot	rhizo	R2	R	s	3	adv_bloom	below_subcrown	woody	NA	tap2
+R273	pot	rhizo	R2	R	s	3	adv_bloom	nod	nod	NA	nodule
+R274	pot	rhizo	R2	R	s	3	adv_bloom	ter	young	NA	tertiary
+R276	pot	rhizo	R2	R	s	1	adv_bloom	tap1	young	NA	subtip (taproot)
+R277	pot	rhizo	R2	R	s	1	adv_bloom	adjtip	young	NA	subtip (lateral)
+R278b	pot	rhizo	R2	R	s	1	adv_bloom	Lat1	woody	NA	lateral1
+R279	pot	rhizo	R2	R	s	1	adv_bloom	subcrown	woody	NA	subcrown
+R28	pot	rhizo	VE.1	V	c	3	cotyl	t2	young	NA	t2
+R280	pot	rhizo	R2	R	s	1	adv_bloom	below_subcrown	woody	NA	tap2
+R281	pot	rhizo	R2	R	s	1	adv_bloom	nod	nod	NA	nodule
+R282	pot	rhizo	R2	R	s	1	adv_bloom	ter	young	NA	tertiary
+R283	pot	rhizo	R2	R	s	2	adv_bloom	tip	young	NA	tip
+R284	pot	rhizo	R2	R	s	2	adv_bloom	tap1	young	NA	subtip (taproot)
+R285	pot	rhizo	R2	R	s	2	adv_bloom	adjtip	young	NA	subtip (lateral)
+R286b	pot	rhizo	R2	R	s	2	adv_bloom	Lat1	woody	NA	lateral1
+R287	pot	rhizo	R2	R	s	2	adv_bloom	subcrown	woody	NA	subcrown
+R288	pot	rhizo	R2	R	s	2	adv_bloom	below_subcrown	woody	NA	tap2
+R289	pot	rhizo	R2	R	s	2	adv_bloom	nod	nod	NA	nodule
+R29	pot	rhizo	VE.1	V	c	3	cotyl	t3	young	NA	t3
+R290	pot	rhizo	R2	R	s	2	adv_bloom	ter	young	NA	tertiary
+R3	pot	rhizo	VE.1	V	s	1	cotyl	t2	young	NA	t2
+R30	pot	rhizo	VE.1	V	c	3	cotyl	t4	young	NA	t4
+R300a	pot	rhizo	R3	R	s	1	pod	tip	young	NA	tip
+R301	pot	rhizo	R3	R	s	1	pod	tap1	young	NA	subtip (taproot)
+R302	pot	rhizo	R3	R	s	1	pod	adjtip	young	NA	subtip (lateral)
+R303b	pot	rhizo	R3	R	s	1	pod	Lat1	woody	NA	lateral1
+R304	pot	rhizo	R3	R	s	1	pod	subcrown	woody	NA	subcrown
+R305	pot	rhizo	R3	R	s	1	pod	below_subcrown	woody	NA	tap2
+R307	pot	rhizo	R3	R	s	1	pod	nod	nod	NA	nodule
+R308	pot	rhizo	R3	R	s	1	pod	ter	young	NA	tertiary
+R31	pot	rhizo	VE.4	V	s	1	post-cotyl	tip	young	NA	tip
+R32	pot	rhizo	VE.4	V	s	1	post-cotyl	tap1	young	NA	subtip (taproot)
+R327	pot	rhizo	R3	R	s	2	pod	tip	young	NA	tip
+R328	pot	rhizo	R3	R	s	2	pod	tap1	young	NA	subtip (taproot)
+R329	pot	rhizo	R3	R	s	2	pod	adjtip	young	NA	subtip (lateral)
+R33	pot	rhizo	VE.4	V	s	1	post-cotyl	adjtip	young	NA	subtip (lateral)
+R330	pot	rhizo	R3	R	s	2	pod	Lat1	woody	NA	lateral1
+R331	pot	rhizo	R3	R	s	2	pod	subcrown	woody	NA	subcrown
+R332	pot	rhizo	R3	R	s	2	pod	below_subcrown	woody	NA	tap2
+R334	pot	rhizo	R3	R	s	2	pod	nod	nod	NA	nodule
+R335	pot	rhizo	R3	R	s	2	pod	ter	young	NA	tertiary
+R336	pot	rhizo	R3	R	s	3	pod	tip	young	NA	tip
+R337	pot	rhizo	R3	R	s	3	pod	tap1	young	NA	subtip (taproot)
+R338	pot	rhizo	R3	R	s	3	pod	adjtip	young	NA	subtip (lateral)
+R339	pot	rhizo	R3	R	s	3	pod	Lat1	woody	NA	lateral1
+R34	pot	rhizo	VE.4	V	s	1	post-cotyl	Lat1	young	NA	lateral1
+R340	pot	rhizo	R3	R	s	3	pod	subcrown	woody	NA	subcrown
+R341	pot	rhizo	R3	R	s	3	pod	below_subcrown	woody	NA	tap2
+R343	pot	rhizo	R3	R	s	3	pod	nod	nod	NA	nodule
+R344	pot	rhizo	R3	R	s	3	pod	ter	young	NA	tertiary
+R35	pot	rhizo	VE.4	V	s	1	post-cotyl	subcrown	young	NA	subcrown
+R36	pot	rhizo	VE.4	V	s	1	post-cotyl	below_subcrown	young	NA	tap2
+R363	pot	rhizo	R1	R	c	3	bloom	tip	young	NA	tip
+R364	pot	rhizo	R1	R	c	3	bloom	tap1	young	NA	subtip (taproot)
+R365	pot	rhizo	R1	R	c	3	bloom	adjtip	young	NA	subtip (lateral)
+R366	pot	rhizo	R1	R	c	3	bloom	Lat1	woody	NA	lateral1
+R367	pot	rhizo	R1	R	c	3	bloom	subcrown	woody	NA	subcrown
+R368	pot	rhizo	R1	R	c	3	bloom	below_subcrown	woody	NA	tap2
+R37	pot	rhizo	VE.4	V	c	1	post-cotyl	tip	young	NA	tip
+R370	pot	rhizo	R1	R	c	3	bloom	nod	nod	NA	nodule
+R371	pot	rhizo	R1	R	c	3	bloom	ter	young	NA	tertiary
+R372	pot	rhizo	R1	R	c	1	bloom	tip	young	NA	tip
+R373	pot	rhizo	R1	R	c	1	bloom	tap1	young	NA	subtip (taproot)
+R374	pot	rhizo	R1	R	c	1	bloom	adjtip	young	NA	subtip (lateral)
+R375	pot	rhizo	R1	R	c	1	bloom	Lat1	woody	NA	lateral1
+R376	pot	rhizo	R1	R	c	1	bloom	subcrown	woody	NA	subcrown
+R377	pot	rhizo	R1	R	c	1	bloom	below_subcrown	woody	NA	tap2
+R379	pot	rhizo	R1	R	c	1	bloom	nod	nod	NA	nodule
+R38	pot	rhizo	VE.4	V	c	1	post-cotyl	tap1	young	NA	subtip (taproot)
+R380	pot	rhizo	R1	R	c	1	bloom	ter	young	NA	tertiary
+R381	pot	rhizo	R1	R	c	2	bloom	tip	young	NA	tip
+R382	pot	rhizo	R1	R	c	2	bloom	tap1	young	NA	subtip (taproot)
+R383	pot	rhizo	R1	R	c	2	bloom	adjtip	young	NA	subtip (lateral)
+R384	pot	rhizo	R1	R	c	2	bloom	Lat1	woody	NA	lateral1
+R385	pot	rhizo	R1	R	c	2	bloom	subcrown	woody	NA	subcrown
+R386	pot	rhizo	R1	R	c	2	bloom	below_subcrown	woody	NA	tap2
+R388	pot	rhizo	R1	R	c	2	bloom	nod	nod	NA	nodule
+R389	pot	rhizo	R1	R	c	2	bloom	ter	young	NA	tertiary
+R39	pot	rhizo	VE.4	V	c	1	post-cotyl	adjtip	young	NA	subtip (lateral)
+R390	pot	rhizo	R3	R	c	3	pod	tip	young	NA	tip
+R391	pot	rhizo	R3	R	c	3	pod	tap1	young	NA	subtip (taproot)
+R392	pot	rhizo	R3	R	c	3	pod	adjtip	young	NA	subtip (lateral)
+R393	pot	rhizo	R3	R	c	3	pod	Lat1	woody	NA	lateral1
+R394	pot	rhizo	R3	R	c	3	pod	subcrown	woody	NA	subcrown
+R395	pot	rhizo	R3	R	c	3	pod	below_subcrown	woody	NA	tap2
+R397	pot	rhizo	R3	R	c	3	pod	nod	nod	NA	nodule
+R398	pot	rhizo	R3	R	c	3	pod	ter	young	NA	tertiary
+R399	pot	rhizo	R3	R	c	1	pod	tip	young	NA	tip
+R4	pot	rhizo	VE.1	V	s	1	cotyl	t3	young	NA	t3
+R40	pot	rhizo	VE.4	V	c	1	post-cotyl	Lat1	young	NA	lateral1
+R400	pot	rhizo	R3	R	c	1	pod	tap1	young	NA	subtip (taproot)
+R401	pot	rhizo	R3	R	c	1	pod	adjtip	young	NA	subtip (lateral)
+R402	pot	rhizo	R3	R	c	1	pod	Lat1	woody	NA	lateral1
+R403	pot	rhizo	R3	R	c	1	pod	subcrown	woody	NA	subcrown
+R404	pot	rhizo	R3	R	c	1	pod	below_subcrown	woody	NA	tap2
+R406	pot	rhizo	R3	R	c	1	pod	nod	nod	NA	nodule
+R407	pot	rhizo	R3	R	c	1	pod	ter	young	NA	tertiary
+R41	pot	rhizo	VE.4	V	c	1	post-cotyl	subcrown	young	NA	subcrown
+R42	pot	rhizo	VE.4	V	c	1	post-cotyl	below_subcrown	young	NA	tap2
+R426	pot	rhizo	R3	R	c	2	pod	tip	young	NA	tip
+R427	pot	rhizo	R3	R	c	2	pod	tap1	young	NA	subtip (taproot)
+R428	pot	rhizo	R3	R	c	2	pod	adjtip	young	NA	subtip (lateral)
+R429	pot	rhizo	R3	R	c	2	pod	Lat1	woody	NA	lateral1
+R43	pot	rhizo	VE.4	V	s	2	post-cotyl	tip	young	NA	tip
+R430	pot	rhizo	R3	R	c	2	pod	subcrown	woody	NA	subcrown
+R431	pot	rhizo	R3	R	c	2	pod	below_subcrown	woody	NA	tap2
+R433	pot	rhizo	R3	R	c	2	pod	nod	nod	NA	nodule
+R434	pot	rhizo	R3	R	c	2	pod	ter	young	NA	tertiary
+R44	pot	rhizo	VE.4	V	s	2	post-cotyl	tap1	young	NA	subtip (taproot)
+R45	pot	rhizo	VE.4	V	s	2	post-cotyl	adjtip	young	NA	subtip (lateral)
+R46	pot	rhizo	VE.4	V	s	2	post-cotyl	Lat1	young	NA	lateral1
+R47	pot	rhizo	VE.4	V	s	2	post-cotyl	subcrown	young	NA	subcrown
+R48	pot	rhizo	VE.4	V	s	2	post-cotyl	below_subcrown	young	NA	tap2
+R49	pot	rhizo	VE.4	V	c	2	post-cotyl	tip	young	NA	tip
+R5	pot	rhizo	VE.1	V	s	1	cotyl	t4	young	NA	t4
+R50	pot	rhizo	VE.4	V	c	2	post-cotyl	tap1	young	NA	subtip (taproot)
+R51	pot	rhizo	VE.4	V	c	2	post-cotyl	adjtip	young	NA	subtip (lateral)
+R52	pot	rhizo	VE.4	V	c	2	post-cotyl	Lat1	young	NA	lateral1
+R53	pot	rhizo	VE.4	V	c	2	post-cotyl	subcrown	young	NA	subcrown
+R54	pot	rhizo	VE.4	V	c	2	post-cotyl	below_subcrown	young	NA	tap2
+R55	pot	rhizo	VE.4	V	s	3	post-cotyl	tip	young	NA	tip
+R56	pot	rhizo	VE.4	V	s	3	post-cotyl	tap1	young	NA	subtip (taproot)
+R57	pot	rhizo	VE.4	V	s	3	post-cotyl	adjtip	young	NA	subtip (lateral)
+R58	pot	rhizo	VE.4	V	s	3	post-cotyl	Lat1	young	NA	lateral1
+R59	pot	rhizo	VE.4	V	s	3	post-cotyl	subcrown	young	NA	subcrown
+R60	pot	rhizo	VE.4	V	s	3	post-cotyl	below_subcrown	young	NA	tap2
+R61	pot	rhizo	VE.4	V	c	3	post-cotyl	tip	young	NA	tip
+R62	pot	rhizo	VE.4	V	c	3	post-cotyl	tap1	young	NA	subtip (taproot)
+R63	pot	rhizo	VE.4	V	c	3	post-cotyl	adjtip	young	NA	subtip (lateral)
+R64	pot	rhizo	VE.4	V	c	3	post-cotyl	Lat1	young	NA	lateral1
+R65	pot	rhizo	VE.4	V	c	3	post-cotyl	subcrown	young	NA	subcrown
+R66	pot	rhizo	VE.4	V	c	3	post-cotyl	below_subcrown	young	NA	tap2
+R67	pot	rhizo	VE.7	V	s	1	uni	tip	young	NA	tip
+R68	pot	rhizo	VE.7	V	s	1	uni	tap1	young	NA	subtip (taproot)
+R69	pot	rhizo	VE.7	V	s	1	uni	adjtip	young	NA	subtip (lateral)
+R7	pot	rhizo	VE.1	V	c	1	cotyl	t1	young	NA	t1
+R70	pot	rhizo	VE.7	V	s	1	uni	Lat1	young	NA	lateral1
+R71	pot	rhizo	VE.7	V	s	1	uni	subcrown	young	NA	subcrown
+R72	pot	rhizo	VE.7	V	s	1	uni	below_subcrown	young	NA	tap2
+R73	pot	rhizo	VE.7	V	c	1	uni	tip	young	NA	tip
+R74	pot	rhizo	VE.7	V	c	1	uni	tap1	young	NA	subtip (taproot)
+R75	pot	rhizo	VE.7	V	c	1	uni	adjtip	young	NA	subtip (lateral)
+R76	pot	rhizo	VE.7	V	c	1	uni	Lat1	young	NA	lateral1
+R77	pot	rhizo	VE.7	V	c	1	uni	subcrown	young	NA	subcrown
+R79	pot	rhizo	VE.7	V	s	2	uni	tip	young	NA	tip
+R8	pot	rhizo	VE.1	V	c	1	cotyl	t2	young	NA	t2
+R80	pot	rhizo	VE.7	V	s	2	uni	tap1	young	NA	subtip (taproot)
+R81	pot	rhizo	VE.7	V	s	2	uni	adjtip	young	NA	subtip (lateral)
+R82	pot	rhizo	VE.7	V	s	2	uni	Lat1	young	NA	lateral1
+R83	pot	rhizo	VE.7	V	s	2	uni	subcrown	young	NA	subcrown
+R84	pot	rhizo	VE.7	V	s	2	uni	below_subcrown	young	NA	tap2
+R85	pot	rhizo	VE.7	V	c	2	uni	tip	young	NA	tip
+R86	pot	rhizo	VE.7	V	c	2	uni	tap1	young	NA	subtip (taproot)
+R87	pot	rhizo	VE.7	V	c	2	uni	adjtip	young	NA	subtip (lateral)
+R88	pot	rhizo	VE.7	V	c	2	uni	Lat1	young	NA	lateral1
+R89	pot	rhizo	VE.7	V	c	2	uni	subcrown	young	NA	subcrown
+R9	pot	rhizo	VE.1	V	c	1	cotyl	t3	young	NA	t3
+R90	pot	rhizo	VE.7	V	c	2	uni	below_subcrown	young	NA	tap2
+R91	pot	rhizo	VE.7	V	s	3	uni	tip	young	NA	tip
+R92	pot	rhizo	VE.7	V	s	3	uni	tap1	young	NA	subtip (taproot)
+R93	pot	rhizo	VE.7	V	s	3	uni	adjtip	young	NA	subtip (lateral)
+R94	pot	rhizo	VE.7	V	s	3	uni	Lat1	young	NA	lateral1
+R95	pot	rhizo	VE.7	V	s	3	uni	subcrown	young	NA	subcrown
+R96	pot	rhizo	VE.7	V	s	3	uni	below_subcrown	young	NA	tap2
+R97	pot	rhizo	VE.7	V	c	3	uni	tip	young	NA	tip
+R98	pot	rhizo	VE.7	V	c	3	uni	tap1	young	NA	subtip (taproot)
+R99	pot	rhizo	VE.7	V	c	3	uni	adjtip	young	NA	subtip (lateral)
+T0a	pot	soil	start	start_soil		1	start_soil	soil		NA	soil
+T0b	pot	soil	start	start_soil		2	start_soil	soil		NA	soil
+T0c	pot	soil	start	start_soil		3	start_soil	soil		NA	soil
+e1	pot	endo	VE.1	V	s	1	cotyl	Lat1	young	NA	lateral1
+e10	pot	endo	VE.1	V	c	1	cotyl	t4	young	NA	t4
+e100	pot	endo	VE.7	V	c	3	uni	Lat1	young	NA	lateral1
+e101	pot	endo	VE.7	V	c	3	uni	subcrown	young	NA	subcrown
+e102	pot	endo	VE.7	V	c	3	uni	below_subcrown	young	NA	tap2
+e103	pot	endo	V1	V	s	1	tri	tip	young	NA	tip
+e104	pot	endo	V1	V	s	1	tri	tap1	young	NA	subtip (taproot)
+e105	pot	endo	V1	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+e106	pot	endo	V1	V	s	1	tri	Lat1	woody	NA	lateral1
+e107	pot	endo	V1	V	s	1	tri	subcrown	woody	NA	subcrown
+e108	pot	endo	V1	V	s	1	tri	below_subcrown	woody	NA	tap2
+e11	pot	endo	VE.1	V	s	2	cotyl	Lat1	young	NA	lateral1
+e110	pot	endo	V1	V	s	2	tri	tip	young	NA	tip
+e111	pot	endo	V1	V	s	2	tri	tap1	young	NA	subtip (taproot)
+e112	pot	endo	V1	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+e113	pot	endo	V1	V	s	2	tri	Lat1	woody	NA	lateral1
+e114	pot	endo	V1	V	s	2	tri	subcrown	woody	NA	subcrown
+e115	pot	endo	V1	V	s	2	tri	below_subcrown	woody	NA	tap2
+e117	pot	endo	V1	V	s	3	tri	tip	young	NA	tip
+e118	pot	endo	V1	V	s	3	tri	tap1	young	NA	subtip (taproot)
+e119	pot	endo	V1	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+e12	pot	endo	VE.1	V	s	2	cotyl	t1	young	NA	t1
+e120	pot	endo	V1	V	s	3	tri	Lat1	woody	NA	lateral1
+e121	pot	endo	V1	V	s	3	tri	subcrown	woody	NA	subcrown
+e122	pot	endo	V1	V	s	3	tri	below_subcrown	woody	NA	tap2
+e124	pot	endo	V1	V	c	1	tri	tip	young	NA	tip
+e125	pot	endo	V1	V	c	1	tri	tap1	young	NA	subtip (taproot)
+e126	pot	endo	V1	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+e127	pot	endo	V1	V	c	1	tri	Lat1	woody	NA	lateral1
+e128	pot	endo	V1	V	c	1	tri	subcrown	woody	NA	subcrown
+e129	pot	endo	V1	V	c	1	tri	below_subcrown	woody	NA	tap2
+e13	pot	endo	VE.1	V	s	2	cotyl	t2	young	NA	t2
+e131	pot	endo	V1	V	c	2	tri	tip	young	NA	tip
+e132	pot	endo	V1	V	c	2	tri	tap1	young	NA	subtip (taproot)
+e133	pot	endo	V1	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+e134	pot	endo	V1	V	c	2	tri	Lat1	woody	NA	lateral1
+e135	pot	endo	V1	V	c	2	tri	subcrown	woody	NA	subcrown
+e136	pot	endo	V1	V	c	2	tri	below_subcrown	woody	NA	tap2
+e138	pot	endo	V1	V	c	3	tri	tip	young	NA	tip
+e139	pot	endo	V1	V	c	3	tri	tap1	young	NA	subtip (taproot)
+e14	pot	endo	VE.1	V	s	2	cotyl	t3	young	NA	t3
+e141	pot	endo	V1	V	c	3	tri	Lat1	woody	NA	lateral1
+e142	pot	endo	V1	V	c	3	tri	subcrown	woody	NA	subcrown
+e143	pot	endo	V1	V	c	3	tri	below_subcrown	woody	NA	tap2
+e145	pot	endo	V3	V	s	1	tri	tip	young	NA	tip
+e146	pot	endo	V3	V	s	1	tri	tap1	young	NA	subtip (taproot)
+e147	pot	endo	V3	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+e148	pot	endo	V3	V	s	1	tri	Lat1	woody	NA	lateral1
+e149	pot	endo	V3	V	s	1	tri	subcrown	woody	NA	subcrown
+e15	pot	endo	VE.1	V	s	2	cotyl	t4	young	NA	t4
+e150	pot	endo	V3	V	s	1	tri	below_subcrown	woody	NA	tap2
+e152	pot	endo	V3	V	s	2	tri	tip	young	NA	tip
+e153	pot	endo	V3	V	s	2	tri	tap1	young	NA	subtip (taproot)
+e154	pot	endo	V3	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+e155	pot	endo	V3	V	s	2	tri	Lat1	woody	NA	lateral1
+e156	pot	endo	V3	V	s	2	tri	subcrown	woody	NA	subcrown
+e157	pot	endo	V3	V	s	2	tri	below_subcrown	woody	NA	tap2
+e159	pot	endo	V3	V	s	3	tri	tip	young	NA	tip
+e160	pot	endo	V3	V	s	3	tri	tap1	young	NA	subtip (taproot)
+e161	pot	endo	V3	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+e162	pot	endo	V3	V	s	3	tri	Lat1	woody	NA	lateral1
+e163	pot	endo	V3	V	s	3	tri	subcrown	woody	NA	subcrown
+e164	pot	endo	V3	V	s	3	tri	below_subcrown	woody	NA	tap2
+e166	pot	endo	V3	V	c	2	tri	tip	young	NA	tip
+e167	pot	endo	V3	V	c	2	tri	tap1	young	NA	subtip (taproot)
+e168	pot	endo	V3	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+e169	pot	endo	V3	V	c	2	tri	Lat1	woody	NA	lateral1
+e17	pot	endo	VE.1	V	c	2	cotyl	t1	young	NA	t1
+e171	pot	endo	V3	V	c	2	tri	below_subcrown	woody	NA	tap2
+e173	pot	endo	V3	V	c	1	tri	tip	young	NA	tip
+e174	pot	endo	V3	V	c	1	tri	tap1	young	NA	subtip (taproot)
+e175	pot	endo	V3	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+e176	pot	endo	V3	V	c	1	tri	Lat1	woody	NA	lateral1
+e177	pot	endo	V3	V	c	1	tri	subcrown	woody	NA	subcrown
+e178	pot	endo	V3	V	c	1	tri	below_subcrown	woody	NA	tap2
+e18	pot	endo	VE.1	V	c	2	cotyl	t2	young	NA	t2
+e180	pot	endo	V3	V	c	3	tri	tip	young	NA	tip
+e181	pot	endo	V3	V	c	3	tri	tap1	young	NA	subtip (taproot)
+e182	pot	endo	V3	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+e183	pot	endo	V3	V	c	3	tri	Lat1	woody	NA	lateral1
+e184	pot	endo	V3	V	c	3	tri	subcrown	woody	NA	subcrown
+e185	pot	endo	V3	V	c	3	tri	below_subcrown	woody	NA	tap2
+e19	pot	endo	VE.1	V	c	2	cotyl	t3	young	NA	t3
+e194	pot	endo	V5	V	s	2	tri	tip	young	NA	tip
+e195	pot	endo	V5	V	s	2	tri	tap1	young	NA	subtip (taproot)
+e196	pot	endo	V5	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+e197	pot	endo	V5	V	s	2	tri	Lat1	woody	NA	lateral1
+e198	pot	endo	V5	V	s	2	tri	subcrown	woody	NA	subcrown
+e199	pot	endo	V5	V	s	2	tri	below_subcrown	woody	NA	tap2
+e2	pot	endo	VE.1	V	s	1	cotyl	t1	young	NA	t1
+e20	pot	endo	VE.1	V	c	2	cotyl	t4	young	NA	t4
+e201	pot	endo	V5	V	c	2	tri	tip	young	NA	tip
+e202	pot	endo	V5	V	c	2	tri	tap1	young	NA	subtip (taproot)
+e203	pot	endo	V5	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+e204	pot	endo	V5	V	c	2	tri	Lat1	woody	NA	lateral1
+e205	pot	endo	V5	V	c	2	tri	subcrown	woody	NA	subcrown
+e208	pot	endo	V5	V	c	1	tri	tip	young	NA	tip
+e209	pot	endo	V5	V	c	1	tri	tap1	young	NA	subtip (taproot)
+e21	pot	endo	VE.1	V	s	3	cotyl	Lat1	young	NA	lateral1
+e210	pot	endo	V5	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+e211	pot	endo	V5	V	c	1	tri	Lat1	woody	NA	lateral1
+e212	pot	endo	V5	V	c	1	tri	subcrown	woody	NA	subcrown
+e213	pot	endo	V5	V	c	1	tri	below_subcrown	woody	NA	tap2
+e215	pot	endo	V5	V	s	1	tri	tip	young	NA	tip
+e216	pot	endo	V5	V	s	1	tri	tap1	young	NA	subtip (taproot)
+e217	pot	endo	V5	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+e218	pot	endo	V5	V	s	1	tri	Lat1	woody	NA	lateral1
+e219	pot	endo	V5	V	s	1	tri	subcrown	woody	NA	subcrown
+e22	pot	endo	VE.1	V	s	3	cotyl	t1	young	NA	t1
+e220	pot	endo	V5	V	s	1	tri	below_subcrown	woody	NA	tap2
+e222	pot	endo	V5	V	s	3	tri	tip	young	NA	tip
+e223	pot	endo	V5	V	s	3	tri	tap1	young	NA	subtip (taproot)
+e224	pot	endo	V5	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+e225	pot	endo	V5	V	s	3	tri	Lat1	woody	NA	lateral1
+e226	pot	endo	V5	V	s	3	tri	subcrown	woody	NA	subcrown
+e227	pot	endo	V5	V	s	3	tri	below_subcrown	woody	NA	tap2
+e23	pot	endo	VE.1	V	s	3	cotyl	t2	young	NA	t2
+e236	pot	endo	V5	V	c	3	tri	tip	young	NA	tip
+e237	pot	endo	V5	V	c	3	tri	tap1	young	NA	subtip (taproot)
+e238	pot	endo	V5	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+e239	pot	endo	V5	V	c	3	tri	Lat1	woody	NA	lateral1
+e24	pot	endo	VE.1	V	s	3	cotyl	t3	young	NA	t3
+e240	pot	endo	V5	V	c	3	tri	subcrown	woody	NA	subcrown
+e241	pot	endo	V5	V	c	3	tri	below_subcrown	woody	NA	tap2
+e243	pot	endo	R1	R	s	1	bloom	tip	young	NA	tip
+e244	pot	endo	R1	R	s	1	bloom	tap1	young	NA	subtip (taproot)
+e245	pot	endo	R1	R	s	1	bloom	adjtip	young	NA	subtip (lateral)
+e246	pot	endo	R1	R	s	1	bloom	Lat1	woody	NA	lateral1
+e247	pot	endo	R1	R	s	1	bloom	subcrown	woody	NA	subcrown
+e248	pot	endo	R1	R	s	1	bloom	below_subcrown	woody	NA	tap2
+e25	pot	endo	VE.1	V	s	3	cotyl	t4	young	NA	t4
+e250	pot	endo	R1	R	s	1	bloom	ter	young	NA	tertiary
+e251	pot	endo	R1	R	s	2	bloom	tip	young	NA	tip
+e252	pot	endo	R1	R	s	2	bloom	tap1	young	NA	subtip (taproot)
+e253	pot	endo	R1	R	s	2	bloom	adjtip	young	NA	subtip (lateral)
+e254	pot	endo	R1	R	s	2	bloom	Lat1	woody	NA	lateral1
+e255	pot	endo	R1	R	s	2	bloom	subcrown	woody	NA	subcrown
+e256	pot	endo	R1	R	s	2	bloom	below_subcrown	woody	NA	tap2
+e258	pot	endo	R1	R	s	2	bloom	ter	young	NA	ter
+e259	pot	endo	R1	R	s	3	bloom	tip	young	NA	tip
+e260	pot	endo	R1	R	s	3	bloom	tap1	young	NA	subtip (taproot)
+e261	pot	endo	R1	R	s	3	bloom	adjtip	young	NA	subtip (lateral)
+e262	pot	endo	R1	R	s	3	bloom	Lat1	woody	NA	lateral1
+e263	pot	endo	R1	R	s	3	bloom	subcrown	woody	NA	subcrown
+e264	pot	endo	R1	R	s	3	bloom	below_subcrown	woody	NA	tap2
+e266	pot	endo	R1	R	s	3	bloom	ter	young	NA	tertiary
+e267	pot	endo	R2	R	s	3	adv_bloom	tip	young	NA	tip
+e268	pot	endo	R2	R	s	3	adv_bloom	tap1	young	NA	subtip (taproot)
+e269	pot	endo	R2	R	s	3	adv_bloom	adjtip	young	NA	subtip (lateral)
+e27	pot	endo	VE.1	V	c	3	cotyl	t1	young	NA	t1
+e270	pot	endo	R2	R	s	3	adv_bloom	Lat1	woody	NA	lateral1
+e271	pot	endo	R2	R	s	3	adv_bloom	subcrown	woody	NA	subcrown
+e272	pot	endo	R2	R	s	3	adv_bloom	below_subcrown	woody	NA	tap2
+e274	pot	endo	R2	R	s	3	adv_bloom	ter	young	NA	tertiary
+e275	pot	endo	R2	R	s	1	adv_bloom	tip	young	NA	tip
+e276	pot	endo	R2	R	s	1	adv_bloom	tap1	young	NA	subtip (taproot)
+e277	pot	endo	R2	R	s	1	adv_bloom	adjtip	young	NA	subtip (lateral)
+e278	pot	endo	R2	R	s	1	adv_bloom	Lat1	woody	NA	lateral1
+e279	pot	endo	R2	R	s	1	adv_bloom	subcrown	woody	NA	subcrown
+e28	pot	endo	VE.1	V	c	3	cotyl	t2	young	NA	t2
+e280	pot	endo	R2	R	s	1	adv_bloom	below_subcrown	woody	NA	tap2
+e282	pot	endo	R2	R	s	1	adv_bloom	ter	young	NA	tertiary
+e283	pot	endo	R2	R	s	2	adv_bloom	tip	young	NA	tip
+e284	pot	endo	R2	R	s	2	adv_bloom	tap1	young	NA	subtip (taproot)
+e285	pot	endo	R2	R	s	2	adv_bloom	adjtip	young	NA	subtip (lateral)
+e286	pot	endo	R2	R	s	2	adv_bloom	Lat1	woody	NA	lateral1
+e287	pot	endo	R2	R	s	2	adv_bloom	subcrown	woody	NA	subcrown
+e288	pot	endo	R2	R	s	2	adv_bloom	below_subcrown	woody	NA	tap2
+e29	pot	endo	VE.1	V	c	3	cotyl	t3	young	NA	t3
+e290	pot	endo	R2	R	s	2	adv_bloom	ter	young	NA	tertiary
+e3	pot	endo	VE.1	V	s	1	cotyl	t2	young	NA	t2
+e30	pot	endo	VE.1	V	c	3	cotyl	t4	young	NA	t4
+e300	pot	endo	R3	R	s	1	pod	tip	young	NA	tip
+e301	pot	endo	R3	R	s	1	pod	tap1	young	NA	subtip (taproot)
+e302	pot	endo	R3	R	s	1	pod	adjtip	young	NA	subtip (lateral)
+e303	pot	endo	R3	R	s	1	pod	Lat1	woody	NA	lateral1
+e304	pot	endo	R3	R	s	1	pod	subcrown	woody	NA	subcrown
+e305	pot	endo	R3	R	s	1	pod	below_subcrown	woody	NA	tap2
+e308	pot	endo	R3	R	s	1	pod	ter	young	NA	tertiary
+e31	pot	endo	VE.4	V	s	1	post-cotyl	tip	young	NA	tip
+e32	pot	endo	VE.4	V	s	1	post-cotyl	tap1	young	NA	subtip (taproot)
+e327	pot	endo	R3	R	s	2	pod	tip	young	NA	tip
+e328	pot	endo	R3	R	s	2	pod	tap1	young	NA	subtip (taproot)
+e329	pot	endo	R3	R	s	2	pod	adjtip	young	NA	subtip (lateral)
+e33	pot	endo	VE.4	V	s	1	post-cotyl	adjtip	young	NA	subtip (lateral)
+e330	pot	endo	R3	R	s	2	pod	Lat1	woody	NA	lateral1
+e331	pot	endo	R3	R	s	2	pod	subcrown	woody	NA	subcrown
+e332	pot	endo	R3	R	s	2	pod	below_subcrown	woody	NA	tap2
+e335	pot	endo	R3	R	s	2	pod	ter	young	NA	tertiary
+e336	pot	endo	R3	R	s	3	pod	tip	young	NA	tip
+e337	pot	endo	R3	R	s	3	pod	tap1	young	NA	subtip (taproot)
+e338	pot	endo	R3	R	s	3	pod	adjtip	young	NA	subtip (lateral)
+e339	pot	endo	R3	R	s	3	pod	Lat1	woody	NA	lateral1
+e34	pot	endo	VE.4	V	s	1	post-cotyl	Lat1	young	NA	lateral1
+e340	pot	endo	R3	R	s	3	pod	subcrown	woody	NA	subcrown
+e341	pot	endo	R3	R	s	3	pod	below_subcrown	woody	NA	tap2
+e344	pot	endo	R3	R	s	3	pod	ter	young	NA	tertiary
+e35	pot	endo	VE.4	V	s	1	post-cotyl	subcrown	young	NA	subcrown
+e36	pot	endo	VE.4	V	s	1	post-cotyl	below_subcrown	young	NA	tap2
+e363	pot	endo	R1	R	c	3	bloom	tip	young	NA	tip
+e364	pot	endo	R1	R	c	3	bloom	tap1	young	NA	subtip (taproot)
+e365	pot	endo	R1	R	c	3	bloom	adjtip	young	NA	subtip (lateral)
+e367	pot	endo	R1	R	c	3	bloom	subcrown	woody	NA	subcrown
+e368	pot	endo	R1	R	c	3	bloom	below_subcrown	woody	NA	tap2
+e37	pot	endo	VE.4	V	c	1	post-cotyl	tip	young	NA	tip
+e371	pot	endo	R1	R	c	3	bloom	ter	young	NA	tertiary
+e372	pot	endo	R1	R	c	1	bloom	tip	young	NA	tip
+e373	pot	endo	R1	R	c	1	bloom	tap1	young	NA	subtip (taproot)
+e374	pot	endo	R1	R	c	1	bloom	adjtip	young	NA	subtip (lateral)
+e375	pot	endo	R1	R	c	1	bloom	Lat1	woody	NA	lateral1
+e376	pot	endo	R1	R	c	1	bloom	subcrown	woody	NA	subcrown
+e377	pot	endo	R1	R	c	1	bloom	below_subcrown	woody	NA	tap2
+e38	pot	endo	VE.4	V	c	1	post-cotyl	tap1	young	NA	subtip (taproot)
+e380	pot	endo	R1	R	c	1	bloom	ter	young	NA	tertiary
+e381	pot	endo	R1	R	c	2	bloom	tip	young	NA	tip
+e382	pot	endo	R1	R	c	2	bloom	tap1	young	NA	subtip (taproot)
+e383	pot	endo	R1	R	c	2	bloom	adjtip	young	NA	subtip (lateral)
+e384	pot	endo	R1	R	c	2	bloom	Lat1	woody	NA	lateral1
+e385	pot	endo	R1	R	c	2	bloom	subcrown	woody	NA	subcrown
+e386	pot	endo	R1	R	c	2	bloom	below_subcrown	woody	NA	tap2
+e389	pot	endo	R1	R	c	2	bloom	ter	young	NA	tertiary
+e39	pot	endo	VE.4	V	c	1	post-cotyl	adjtip	young	NA	subtip (lateral)
+e390	pot	endo	R3	R	c	3	pod	tip	young	NA	tip
+e391	pot	endo	R3	R	c	3	pod	tap1	young	NA	subtip (taproot)
+e392	pot	endo	R3	R	c	3	pod	adjtip	young	NA	subtip (lateral)
+e393	pot	endo	R3	R	c	3	pod	Lat1	woody	NA	lateral1
+e394	pot	endo	R3	R	c	3	pod	subcrown	woody	NA	subcrown
+e395	pot	endo	R3	R	c	3	pod	below_subcrown	woody	NA	tap2
+e398	pot	endo	R3	R	c	3	pod	ter	young	NA	tertiary
+e399	pot	endo	R3	R	c	1	pod	tip	young	NA	tip
+e4	pot	endo	VE.1	V	s	1	cotyl	t3	young	NA	t3
+e40	pot	endo	VE.4	V	c	1	post-cotyl	Lat1	young	NA	lateral1
+e400	pot	endo	R3	R	c	1	pod	tap1	young	NA	subtip (taproot)
+e401	pot	endo	R3	R	c	1	pod	adjtip	young	NA	subtip (lateral)
+e402	pot	endo	R3	R	c	1	pod	Lat1	woody	NA	lateral1
+e403	pot	endo	R3	R	c	1	pod	subcrown	woody	NA	subcrown
+e404	pot	endo	R3	R	c	1	pod	below_subcrown	woody	NA	tap2
+e407	pot	endo	R3	R	c	1	pod	ter	young	NA	tertiary
+e41	pot	endo	VE.4	V	c	1	post-cotyl	subcrown	young	NA	subcrown
+e42	pot	endo	VE.4	V	c	1	post-cotyl	below_subcrown	young	NA	tap2
+e426	pot	endo	R3	R	c	2	pod	tip	young	NA	tip
+e427	pot	endo	R3	R	c	2	pod	tap1	young	NA	subtip (taproot)
+e428	pot	endo	R3	R	c	2	pod	adjtip	young	NA	subtip (lateral)
+e429	pot	endo	R3	R	c	2	pod	Lat1	woody	NA	lateral1
+e43	pot	endo	VE.4	V	s	2	post-cotyl	tip	young	NA	tip
+e430	pot	endo	R3	R	c	2	pod	subcrown	woody	NA	subcrown
+e431	pot	endo	R3	R	c	2	pod	below_subcrown	woody	NA	tap2
+e434	pot	endo	R3	R	c	2	pod	ter	young	NA	tertiary
+e436	field	endo	V2	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+e438	field	endo	V2	V	s	1	tri	Lat1	woody	NA	lateral1
+e439	field	endo	V2	V	s	1	tri	subcrown	woody	NA	subcrown
+e44	pot	endo	VE.4	V	s	2	post-cotyl	tap1	young	NA	subtip (taproot)
+e440	field	endo	V2	V	s	1	tri	below_subcrown	woody	NA	tap2
+e441	field	endo	V2	V	s	1	tri	tap4	woody	NA	tap7
+e442	field	endo	V2	V	s	1	tri	tap5	woody	NA	tap13
+e443	field	endo	V2	V	s	2	tri	tip	young	NA	tip
+e444	field	endo	V2	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+e446	field	endo	V2	V	s	2	tri	Lat1	woody	NA	lateral1
+e447	field	endo	V2	V	s	2	tri	subcrown	woody	NA	subcrown
+e448	field	endo	V2	V	s	2	tri	below_subcrown	woody	NA	tap2
+e449	field	endo	V2	V	s	2	tri	tap4	woody	NA	tap7
+e45	pot	endo	VE.4	V	s	2	post-cotyl	adjtip	young	NA	subtip (lateral)
+e450	field	endo	V2	V	s	2	tri	tap5	woody	NA	tap13
+e451	field	endo	V2	V	s	3	tri	tip	young	NA	tip
+e452	field	endo	V2	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+e454	field	endo	V2	V	s	3	tri	Lat1	woody	NA	lateral1
+e455	field	endo	V2	V	s	3	tri	subcrown	woody	NA	subcrown
+e456	field	endo	V2	V	s	3	tri	below_subcrown	woody	NA	tap2
+e457	field	endo	V2	V	s	3	tri	tap4	woody	NA	tap7
+e459	field	endo	V2	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+e46	pot	endo	VE.4	V	s	2	post-cotyl	Lat1	young	NA	lateral1
+e461	field	endo	V2	V	c	1	tri	Lat1	woody	NA	lateral1
+e462	field	endo	V2	V	c	1	tri	subcrown	woody	NA	subcrown
+e463	field	endo	V2	V	c	1	tri	below_subcrown	woody	NA	tap2
+e464	field	endo	V2	V	c	1	tri	tap4	woody	NA	tap7
+e465	field	endo	V2	V	c	1	tri	tap5	woody	NA	tap13
+e466	field	endo	V2	V	c	2	tri	tip	young	NA	tip
+e467	field	endo	V2	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+e469	field	endo	V2	V	c	2	tri	Lat1	woody	NA	lateral1
+e47	pot	endo	VE.4	V	s	2	post-cotyl	subcrown	young	NA	subcrown
+e470	field	endo	V2	V	c	2	tri	subcrown	woody	NA	subcrown
+e471	field	endo	V2	V	c	2	tri	below_subcrown	woody	NA	tap2
+e472	field	endo	V2	V	c	2	tri	tap4	woody	NA	tap7
+e473	field	endo	V2	V	c	2	tri	tap5	woody	NA	tap13
+e474	field	endo	V2	V	c	3	tri	tip	young	NA	tip
+e475	field	endo	V2	V	c	3	tri	adjtip	young	NA	subtip (lateral)
+e477	field	endo	V2	V	c	3	tri	Lat1	woody	NA	lateral1
+e478	field	endo	V2	V	c	3	tri	subcrown	woody	NA	subcrown
+e479	field	endo	V2	V	c	3	tri	below_subcrown	woody	NA	tap2
+e48	pot	endo	VE.4	V	s	2	post-cotyl	below_subcrown	young	NA	tap2
+e480	field	endo	V2	V	c	3	tri	tap4	woody	NA	tap7
+e481	field	endo	V2	V	c	3	tri	tap5	woody	NA	tap13
+e482	field	endo	R4	R	s	1	pod	tip	young	NA	tip
+e483	field	endo	R4	R	s	1	pod	adjtip	young	NA	subtip (lateral)
+e484	field	endo	R4	R	s	1	pod	ter	young	NA	tertiary
+e486	field	endo	R4	R	s	1	pod	Lat1	woody	NA	lateral1
+e487	field	endo	R4	R	s	1	pod	Lat2	woody	NA	lateral7
+e488	field	endo	R4	R	s	1	pod	Lat3	woody	NA	lateral13
+e49	pot	endo	VE.4	V	c	2	post-cotyl	tip	young	NA	tip
+e492	field	endo	R4	R	s	1	pod	subcrown	woody	NA	subcrown
+e493	field	endo	R4	R	s	1	pod	below_subcrown	woody	NA	tap2
+e494	field	endo	R4	R	s	1	pod	tap4	woody	NA	tap7
+e495	field	endo	R4	R	s	1	pod	tap5	woody	NA	tap13
+e496	field	endo	R4	R	s	1	pod	tap6	woody	NA	tap19
+e497	field	endo	R4	R	s	2	pod	tip	young	NA	tip
+e498	field	endo	R4	R	s	2	pod	adjtip	young	NA	subtip (lateral)
+e499	field	endo	R4	R	s	2	pod	ter	young	NA	tertiary
+e5	pot	endo	VE.1	V	s	1	cotyl	t4	young	NA	t4
+e501	field	endo	R4	R	s	2	pod	Lat1	woody	NA	lateral1
+e502	field	endo	R4	R	s	2	pod	Lat2	woody	NA	lateral7
+e503	field	endo	R4	R	s	2	pod	Lat3	woody	NA	lateral13
+e507	field	endo	R4	R	s	2	pod	subcrown	woody	NA	subcrown
+e508	field	endo	R4	R	s	2	pod	below_subcrown	woody	NA	tap2
+e509	field	endo	R4	R	s	2	pod	tap4	woody	NA	tap7
+e51	pot	endo	VE.4	V	c	2	post-cotyl	adjtip	young	NA	subtip (lateral)
+e510	field	endo	R4	R	s	2	pod	tap5	woody	NA	tap13
+e511	field	endo	R4	R	s	2	pod	tap6	woody	NA	tap19
+e512	field	endo	R4	R	s	3	pod	tip	young	NA	tip
+e513	field	endo	R4	R	s	3	pod	adjtip	young	NA	subtip (lateral)
+e514b	field	endo	R4	R	s	3	pod	ter	young	NA	tertiary
+e516	field	endo	R4	R	s	3	pod	Lat1	woody	NA	lateral1
+e517	field	endo	R4	R	s	3	pod	Lat2	woody	NA	lateral7
+e518	field	endo	R4	R	s	3	pod	Lat3	woody	NA	lateral13
+e52	pot	endo	VE.4	V	c	2	post-cotyl	Lat1	young	NA	lateral1
+e522	field	endo	R4	R	s	3	pod	subcrown	woody	NA	subcrown
+e523	field	endo	R4	R	s	3	pod	below_subcrown	woody	NA	tap2
+e524	field	endo	R4	R	s	3	pod	tap4	woody	NA	tap7
+e525	field	endo	R4	R	s	3	pod	tap5	woody	NA	tap13
+e526	field	endo	R4	R	s	3	pod	tap6	woody	NA	tap19
+e527	field	endo	R2	R	c	1	adv_bloom	tip	young	NA	tip
+e528	field	endo	R2	R	c	1	adv_bloom	adjtip	young	NA	subtip (lateral)
+e529	field	endo	R2	R	c	1	adv_bloom	ter	young	NA	tertiary
+e53	pot	endo	VE.4	V	c	2	post-cotyl	subcrown	young	NA	subcrown
+e531	field	endo	R2	R	c	1	adv_bloom	Lat1	woody	NA	lateral1
+e532	field	endo	R2	R	c	1	adv_bloom	Lat2	woody	NA	lateral7
+e533	field	endo	R2	R	c	1	adv_bloom	Lat3	woody	NA	lateral13
+e537	field	endo	R2	R	c	1	adv_bloom	subcrown	woody	NA	subcrown
+e538	field	endo	R2	R	c	1	adv_bloom	below_subcrown	woody	NA	tap2
+e539	field	endo	R2	R	c	1	adv_bloom	tap4	woody	NA	tap7
+e54	pot	endo	VE.4	V	c	2	post-cotyl	below_subcrown	young	NA	tap2
+e540	field	endo	R2	R	c	1	adv_bloom	tap5	woody	NA	tap13
+e541	field	endo	R2	R	c	1	adv_bloom	tap6	woody	NA	tap19
+e542	field	endo	R2	R	c	2	adv_bloom	tip	young	NA	tip
+e543	field	endo	R2	R	c	2	adv_bloom	adjtip	young	NA	subtip (lateral)
+e544	field	endo	R2	R	c	2	adv_bloom	ter	young	NA	tertiary
+e546	field	endo	R2	R	c	2	adv_bloom	Lat1	woody	NA	lateral1
+e547	field	endo	R2	R	c	2	adv_bloom	Lat2	woody	NA	lateral7
+e548	field	endo	R2	R	c	2	adv_bloom	Lat3	woody	NA	lateral13
+e55	pot	endo	VE.4	V	s	3	post-cotyl	tip	young	NA	tip
+e552	field	endo	R2	R	c	2	adv_bloom	subcrown	woody	NA	subcrown
+e553	field	endo	R2	R	c	2	adv_bloom	below_subcrown	woody	NA	tap2
+e554	field	endo	R2	R	c	2	adv_bloom	tap4	woody	NA	tap7
+e555	field	endo	R2	R	c	2	adv_bloom	tap5	woody	NA	tap13
+e559	field	endo	R2	R	c	3	adv_bloom	tip	young	NA	tip
+e56	pot	endo	VE.4	V	s	3	post-cotyl	tap1	young	NA	subtip (taproot)
+e560	field	endo	R2	R	c	3	adv_bloom	adjtip	young	NA	subtip (lateral)
+e561	field	endo	R2	R	c	3	adv_bloom	ter	young	NA	tertiary
+e563	field	endo	R2	R	c	3	adv_bloom	Lat1	woody	NA	lateral1
+e564	field	endo	R2	R	c	3	adv_bloom	Lat2	woody	NA	lateral7
+e565	field	endo	R2	R	c	3	adv_bloom	Lat3	woody	NA	lateral13
+e57	pot	endo	VE.4	V	s	3	post-cotyl	adjtip	young	NA	subtip (lateral)
+e570	field	endo	R2	R	c	3	adv_bloom	below_subcrown	woody	NA	tap2
+e571	field	endo	R2	R	c	3	adv_bloom	tap4	woody	NA	tap7
+e572	field	endo	R2	R	c	3	adv_bloom	tap5	woody	NA	tap13
+e573	field	endo	R2	R	c	3	adv_bloom	tap6	woody	NA	tap19
+e58	pot	endo	VE.4	V	s	3	post-cotyl	Lat1	young	NA	lateral1
+e59	pot	endo	VE.4	V	s	3	post-cotyl	subcrown	young	NA	subcrown
+e60	pot	endo	VE.4	V	s	3	post-cotyl	below_subcrown	young	NA	tap2
+e61	pot	endo	VE.4	V	c	3	post-cotyl	tip	young	NA	tip
+e62	pot	endo	VE.4	V	c	3	post-cotyl	tap1	young	NA	subtip (taproot)
+e63	pot	endo	VE.4	V	c	3	post-cotyl	adjtip	young	NA	subtip (lateral)
+e64	pot	endo	VE.4	V	c	3	post-cotyl	Lat1	young	NA	lateral1
+e65	pot	endo	VE.4	V	c	3	post-cotyl	subcrown	young	NA	subcrown
+e66	pot	endo	VE.4	V	c	3	post-cotyl	below_subcrown	young	NA	tap2
+e67	pot	endo	VE.7	V	s	1	uni	tip	young	NA	tip
+e68	pot	endo	VE.7	V	s	1	uni	tap1	young	NA	subtip (taproot)
+e7	pot	endo	VE.1	V	c	1	cotyl	t1	young	NA	t1
+e70	pot	endo	VE.7	V	s	1	uni	Lat1	young	NA	lateral1
+e71	pot	endo	VE.7	V	s	1	uni	subcrown	young	NA	subcrown
+e72	pot	endo	VE.7	V	s	1	uni	below_subcrown	young	NA	tap2
+e73	pot	endo	VE.7	V	c	1	uni	tip	young	NA	tip
+e74	pot	endo	VE.7	V	c	1	uni	tap1	young	NA	subtip (taproot)
+e75	pot	endo	VE.7	V	c	1	uni	adjtip	young	NA	subtip (lateral)
+e76	pot	endo	VE.7	V	c	1	uni	Lat1	young	NA	lateral1
+e77	pot	endo	VE.7	V	c	1	uni	subcrown	young	NA	subcrown
+e78	pot	endo	VE.7	V	c	1	uni	below_subcrown	young	NA	tap2
+e79	pot	endo	VE.7	V	s	2	uni	tip	young	NA	tip
+e8	pot	endo	VE.1	V	c	1	cotyl	t2	young	NA	t2
+e80	pot	endo	VE.7	V	s	2	uni	tap1	young	NA	subtip (taproot)
+e81	pot	endo	VE.7	V	s	2	uni	adjtip	young	NA	subtip (lateral)
+e82	pot	endo	VE.7	V	s	2	uni	Lat1	young	NA	lateral1
+e83	pot	endo	VE.7	V	s	2	uni	subcrown	young	NA	subcrown
+e84	pot	endo	VE.7	V	s	2	uni	below_subcrown	young	NA	tap2
+e85	pot	endo	VE.7	V	c	2	uni	tip	young	NA	tip
+e86	pot	endo	VE.7	V	c	2	uni	tap1	young	NA	subtip (taproot)
+e87	pot	endo	VE.7	V	c	2	uni	adjtip	young	NA	subtip (lateral)
+e88	pot	endo	VE.7	V	c	2	uni	Lat1	young	NA	lateral1
+e89	pot	endo	VE.7	V	c	2	uni	subcrown	young	NA	subcrown
+e9	pot	endo	VE.1	V	c	1	cotyl	t3	young	NA	t3
+e90	pot	endo	VE.7	V	c	2	uni	below_subcrown	young	NA	tap2
+e91	pot	endo	VE.7	V	s	3	uni	tip	young	NA	tip
+e92	pot	endo	VE.7	V	s	3	uni	tap1	young	NA	subtip (taproot)
+e93	pot	endo	VE.7	V	s	3	uni	adjtip	young	NA	subtip (lateral)
+e94	pot	endo	VE.7	V	s	3	uni	Lat1	young	NA	lateral1
+e95	pot	endo	VE.7	V	s	3	uni	subcrown	young	NA	subcrown
+e96	pot	endo	VE.7	V	s	3	uni	below_subcrown	young	NA	tap2
+e97	pot	endo	VE.7	V	c	3	uni	tip	young	NA	tip
+e98	pot	endo	VE.7	V	c	3	uni	tap1	young	NA	subtip (taproot)
+e99	pot	endo	VE.7	V	c	3	uni	adjtip	young	NA	subtip (lateral)
+Ca10	field	soil	R2	R	c	1	soil-adv_bloom	soil-10	NA	10	soil-10
+Ca2	field	soil	R2	R	c	1	soil-adv_bloom	soil-2	NA	2	soil-2
+Cb10	field	soil	R2	R	c	2	soil-adv_bloom	soil-10	NA	10	soil-10
+Cb18	field	soil	R2	R	c	2	soil-adv_bloom	soil-18	NA	18	soil-18
+Cb2	field	soil	R2	R	c	2	soil-adv_bloom	soil-2	NA	2	soil-2
+Cc10	field	soil	R2	R	c	3	soil-adv_bloom	soil-10	NA	10	soil-10
+Cc18	field	soil	R2	R	c	3	soil-adv_bloom	soil-18	NA	18	soil-18
+Cc2	field	soil	R2	R	c	3	soil-adv_bloom	soil-2	NA	2	soil-2
+Sa10	field	soil	R4	R	s	1	soil-pod	soil-10	NA	10	soil-10
+Sa18	field	soil	R4	R	s	1	soil-pod	soil-18	NA	18	soil-18
+Sa2	field	soil	R4	R	s	1	soil-pod	soil-2	NA	2	soil-2
+Sb10	field	soil	R4	R	s	2	soil-pod	soil-10	NA	10	soil-10
+Sb18	field	soil	R4	R	s	2	soil-pod	soil-18	NA	18	soil-18
+Sb2	field	soil	R4	R	s	2	soil-pod	soil-2	NA	2	soil-2
+Sc10	field	soil	R4	R	s	3	soil-pod	soil-10	NA	10	soil-10
+Sc18	field	soil	R4	R	s	3	soil-pod	soil-18	NA	18	soil-18
+Sc2	field	soil	R4	R	s	3	soil-pod	soil-2	NA	2	soil-2
+R435	field	rhizo	V2	V	s	1	tri	tip	young	NA	tip
+R436	field	rhizo	V2	V	s	1	tri	adjtip	young	NA	subtip (lateral)
+R437	field	rhizo	V2	V	s	1	tri	nod	nod	NA	nodule
+R438	field	rhizo	V2	V	s	1	tri	Lat1	woody	NA	lateral1
+R439	field	rhizo	V2	V	s	1	tri	subcrown	woody	NA	subcrown
+R440	field	rhizo	V2	V	s	1	tri	below_subcrown	woody	NA	tap2
+R441	field	rhizo	V2	V	s	1	tri	tap4	woody	NA	tap7
+R442	field	rhizo	V2	V	s	1	tri	tap5	woody	NA	tap13
+R443	field	rhizo	V2	V	s	2	tri	tip	young	NA	tip
+R444	field	rhizo	V2	V	s	2	tri	adjtip	young	NA	subtip (lateral)
+R445	field	rhizo	V2	V	s	2	tri	nod	nod	NA	nodule
+R446	field	rhizo	V2	V	s	2	tri	Lat1	woody	NA	lateral1
+R447	field	rhizo	V2	V	s	2	tri	subcrown	woody	NA	subcrown
+R448	field	rhizo	V2	V	s	2	tri	below_subcrown	woody	NA	tap2
+R449	field	rhizo	V2	V	s	2	tri	tap4	woody	NA	tap7
+R450	field	rhizo	V2	V	s	2	tri	tap5	woody	NA	tap13
+R451	field	rhizo	V2	V	s	3	tri	tip	young	NA	tip
+R452	field	rhizo	V2	V	s	3	tri	adjtip	young	NA	subtip (lateral)
+R453	field	rhizo	V2	V	s	3	tri	nod	nod	NA	nodule
+R454	field	rhizo	V2	V	s	3	tri	Lat1	woody	NA	lateral1
+R455	field	rhizo	V2	V	s	3	tri	subcrown	woody	NA	subcrown
+R456	field	rhizo	V2	V	s	3	tri	below_subcrown	woody	NA	tap2
+R457	field	rhizo	V2	V	s	3	tri	tap4	woody	NA	tap7
+R458	field	rhizo	V2	V	c	1	tri	tip	young	NA	tip
+R459	field	rhizo	V2	V	c	1	tri	adjtip	young	NA	subtip (lateral)
+R460	field	rhizo	V2	V	c	1	tri	nod	nod	NA	nodule
+R461	field	rhizo	V2	V	c	1	tri	Lat1	woody	NA	lateral1
+R462	field	rhizo	V2	V	c	1	tri	subcrown	woody	NA	subcrown
+R463	field	rhizo	V2	V	c	1	tri	below_subcrown	woody	NA	tap2
+R464	field	rhizo	V2	V	c	1	tri	tap4	woody	NA	tap7
+R465	field	rhizo	V2	V	c	1	tri	tap5	woody	NA	tap13
+R466	field	rhizo	V2	V	c	2	tri	tip	young	NA	tip
+R467	field	rhizo	V2	V	c	2	tri	adjtip	young	NA	subtip (lateral)
+R468	field	rhizo	V2	V	c	2	tri	nod	nod	NA	nodule
+R469	field	rhizo	V2	V	c	2	tri	Lat1	woody	NA	lateral1
+R470	field	rhizo	V2	V	c	2	tri	subcrown	woody	NA	subcrown
+R471	field	rhizo	V2	V	c	2	tri	below_subcrown	woody	NA	tap2
+R472	field	rhizo	V2	V	c	2	tri	tap4	woody	NA	tap7
+R473	field	rhizo	V2	V	c	2	tri	tap5	woody	NA	tap13
+R474	field	rhizo	V2	V	c	3	tri	tip	young	NA	tip
+R476	field	rhizo	V2	V	c	3	tri	nod	nod	NA	nodule
+R477	field	rhizo	V2	V	c	3	tri	Lat1	woody	NA	lateral1
+R478	field	rhizo	V2	V	c	3	tri	subcrown	woody	NA	subcrown
+R479	field	rhizo	V2	V	c	3	tri	below_subcrown	woody	NA	tap2
+R480	field	rhizo	V2	V	c	3	tri	tap4	woody	NA	tap7
+R481	field	rhizo	V2	V	c	3	tri	tap5	woody	NA	tap13
+R482	field	rhizo	R4	R	s	1	pod	tip	young	NA	tip
+R483	field	rhizo	R4	R	s	1	pod	adjtip	young	NA	subtip (lateral)
+R484a	field	rhizo	R4	R	s	1	pod	ter	young	NA	tertiary
+R485	field	rhizo	R4	R	s	1	pod	nod	nod	NA	nodule
+R486	field	rhizo	R4	R	s	1	pod	Lat1	woody	NA	lateral1
+R487	field	rhizo	R4	R	s	1	pod	Lat2	woody	NA	lateral7
+R488	field	rhizo	R4	R	s	1	pod	Lat3	woody	NA	lateral13
+R492	field	rhizo	R4	R	s	1	pod	subcrown	woody	NA	subcrown
+R493	field	rhizo	R4	R	s	1	pod	below_subcrown	woody	NA	tap2
+R494	field	rhizo	R4	R	s	1	pod	tap4	woody	NA	tap7
+R495	field	rhizo	R4	R	s	1	pod	tap5	woody	NA	tap13
+R496	field	rhizo	R4	R	s	1	pod	tap6	woody	NA	tap19
+R497	field	rhizo	R4	R	s	2	pod	tip	young	NA	tip
+R498	field	rhizo	R4	R	s	2	pod	adjtip	young	NA	subtip (lateral)
+R499	field	rhizo	R4	R	s	2	pod	ter	young	NA	tertiary
+R500	field	rhizo	R4	R	s	2	pod	nod	nod	NA	nodule
+R501	field	rhizo	R4	R	s	2	pod	Lat1	woody	NA	lateral1
+R502	field	rhizo	R4	R	s	2	pod	Lat2	woody	NA	lateral7
+R503	field	rhizo	R4	R	s	2	pod	Lat3	woody	NA	lateral13
+R507	field	rhizo	R4	R	s	2	pod	subcrown	woody	NA	subcrown
+R508	field	rhizo	R4	R	s	2	pod	below_subcrown	woody	NA	tap2
+R509	field	rhizo	R4	R	s	2	pod	tap4	woody	NA	tap7
+R510	field	rhizo	R4	R	s	2	pod	tap5	woody	NA	tap13
+R511	field	rhizo	R4	R	s	2	pod	tap6	woody	NA	tap19
+R512	field	rhizo	R4	R	s	3	pod	tip	young	NA	tip
+R513	field	rhizo	R4	R	s	3	pod	adjtip	young	NA	subtip (lateral)
+R514	field	rhizo	R4	R	s	3	pod	ter	young	NA	tertiary
+R515	field	rhizo	R4	R	s	3	pod	nod	nod	NA	nodule
+R516	field	rhizo	R4	R	s	3	pod	Lat1	woody	NA	lateral1
+R517	field	rhizo	R4	R	s	3	pod	Lat2	woody	NA	lateral7
+R518	field	rhizo	R4	R	s	3	pod	Lat3	woody	NA	lateral13
+R522	field	rhizo	R4	R	s	3	pod	subcrown	woody	NA	subcrown
+R523	field	rhizo	R4	R	s	3	pod	below_subcrown	woody	NA	tap2
+R524	field	rhizo	R4	R	s	3	pod	tap4	woody	NA	tap7
+R525	field	rhizo	R4	R	s	3	pod	tap5	woody	NA	tap13
+R526	field	rhizo	R4	R	s	3	pod	tap6	woody	NA	tap19
+R527	field	rhizo	R2	R	c	1	adv_bloom	tip	young	NA	tip
+R528	field	rhizo	R2	R	c	1	adv_bloom	adjtip	young	NA	subtip (lateral)
+R529	field	rhizo	R2	R	c	1	adv_bloom	ter	young	NA	tertiary
+R530	field	rhizo	R2	R	c	1	adv_bloom	nod	nod	NA	nodule
+R531	field	rhizo	R2	R	c	1	adv_bloom	Lat1	woody	NA	lateral1
+R532	field	rhizo	R2	R	c	1	adv_bloom	Lat2	woody	NA	lateral7
+R533	field	rhizo	R2	R	c	1	adv_bloom	Lat3	woody	NA	lateral13
+R537	field	rhizo	R2	R	c	1	adv_bloom	subcrown	woody	NA	subcrown
+R538	field	rhizo	R2	R	c	1	adv_bloom	below_subcrown	woody	NA	tap2
+R539	field	rhizo	R2	R	c	1	adv_bloom	tap4	woody	NA	tap7
+R540	field	rhizo	R2	R	c	1	adv_bloom	tap5	woody	NA	tap13
+R541	field	rhizo	R2	R	c	1	adv_bloom	tap6	woody	NA	tap19
+R542	field	rhizo	R2	R	c	2	adv_bloom	tip	young	NA	tip
+R543	field	rhizo	R2	R	c	2	adv_bloom	adjtip	young	NA	subtip (lateral)
+R544	field	rhizo	R2	R	c	2	adv_bloom	ter	young	NA	tertiary
+R545	field	rhizo	R2	R	c	2	adv_bloom	nod	nod	NA	nodule
+R546	field	rhizo	R2	R	c	2	adv_bloom	Lat1	woody	NA	lateral1
+R547	field	rhizo	R2	R	c	2	adv_bloom	Lat2	woody	NA	lateral7
+R548	field	rhizo	R2	R	c	2	adv_bloom	Lat3	woody	NA	lateral13
+R552	field	rhizo	R2	R	c	2	adv_bloom	subcrown	woody	NA	subcrown
+R553	field	rhizo	R2	R	c	2	adv_bloom	below_subcrown	woody	NA	tap2
+R554	field	rhizo	R2	R	c	2	adv_bloom	tap4	woody	NA	tap7
+R555	field	rhizo	R2	R	c	2	adv_bloom	tap5	woody	NA	tap13
+R556	field	rhizo	R2	R	c	2	adv_bloom	tap6	woody	NA	tap19
+R559	field	rhizo	R2	R	c	3	adv_bloom	tip	young	NA	tip
+R560	field	rhizo	R2	R	c	3	adv_bloom	adjtip	young	NA	subtip (lateral)
+R561	field	rhizo	R2	R	c	3	adv_bloom	ter	young	NA	tertiary
+R562	field	rhizo	R2	R	c	3	adv_bloom	nod	nod	NA	nodule
+R563	field	rhizo	R2	R	c	3	adv_bloom	Lat1	woody	NA	lateral1
+R564	field	rhizo	R2	R	c	3	adv_bloom	Lat2	woody	NA	lateral7
+R565	field	rhizo	R2	R	c	3	adv_bloom	Lat3	woody	NA	lateral13
+R569	field	rhizo	R2	R	c	3	adv_bloom	subcrown	woody	NA	subcrown
+R570	field	rhizo	R2	R	c	3	adv_bloom	below_subcrown	woody	NA	tap2
+R571	field	rhizo	R2	R	c	3	adv_bloom	tap4	woody	NA	tap7
+R572	field	rhizo	R2	R	c	3	adv_bloom	tap5	woody	NA	tap13
+R573	field	rhizo	R2	R	c	3	adv_bloom	tap6	woody	NA	tap19
