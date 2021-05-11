@@ -1,8 +1,7 @@
-from ingest_data import location_data, tax_ranks
-
-def main():
-  print(location_data['ASV_25708'])
-  print(tax_ranks)
+import gui
+import strains
 
 if __name__ == "__main__":
-  main()
+  all_strains = strains.parse_strains_file()
+  strains_index = strains.build_strains_index(all_strains)
+  gui.init(strains_index)
