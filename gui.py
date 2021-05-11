@@ -1,87 +1,150 @@
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFormLayout, QFrame, QLayout, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
 
 import sys
 
 from taxa import ORDERED_TAXA, Taxa
 
+BUTTON_WIDTH = 80
+NAME_INPUT_WIDTH = 250
+TAXA_SELECTOR_WIDTH = 100
+
 class Window(QWidget):
-  def __init__(self, strains):
+  def __init__(self, app, strains):
     super().__init__()
 
+    self.app = app
     self.strains = strains
+    self.current_viewed_strains = None
+    self.current_viewed_name = ""
  
     self.setGeometry(0, 0, 1200, 800)
     self.setWindowTitle('Microbiome Root Mapping')
 
-    hbox = QHBoxLayout()
-    left_bar_vbox = QVBoxLayout()
-    left_bar_inputs = QFormLayout()
-
-    taxa_selector = QComboBox()
-    self.name_input = QLineEdit()
-    self.submit_button = QPushButton("Submit")
-
     self.init_name_input_completers()
+    toolbar = self.build_toolbar()
+    preview = self.build_init_preview()
 
-    taxa_selector.addItems([taxa.value for taxa in ORDERED_TAXA])
-    taxa_selector.currentIndexChanged.connect(self.on_change_selected_taxa)
-    self.on_change_selected_taxa(0)
+    vbox_divider = QFrame()
+    vbox_divider.setFrameShape(QFrame.Shape.HLine)
+    vbox_divider.setFrameShadow(QFrame.Shadow.Sunken)
 
-    self.name_input.textChanged.connect(self.on_name_text_changed)
-    self.on_name_text_changed("")
+    vbox = QVBoxLayout()
+    vbox.addLayout(toolbar)
+    vbox.addWidget(vbox_divider)
+    vbox.addLayout(preview, 1)
 
-    self.submit_button.clicked.connect(self.on_submit_button_clicked)
- 
-    preview = QLabel()
-    preview.setText("<Preview goes here>")
-
-    hbox_divider = QFrame()
-    hbox_divider.setFrameShape(QFrame.Shape.VLine)
-    hbox_divider.setFrameShadow(QFrame.Shadow.Sunken)
-
-    left_bar_inputs.addRow("Rank:", taxa_selector)
-    left_bar_inputs.addRow("Name:", self.name_input)
-
-    left_bar_vbox.addLayout(left_bar_inputs)
-    left_bar_vbox.addWidget(self.submit_button)
-  
-    hbox.addLayout(left_bar_vbox)
-    hbox.addWidget(hbox_divider)
-    hbox.addWidget(preview, 1)
-    self.setLayout(hbox)
-
+    self.setLayout(vbox)
     self.show()
 
   def init_name_input_completers(self):
     self.name_input_completers = dict()
     for taxa, names in self.strains.items():
       completer = QCompleter(names)
-      completer.setCaseSensitivity(QtCore.Qt.CaseSensitivity.CaseInsensitive)
+      completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
       self.name_input_completers[taxa] = completer
   
+  def build_toolbar(self):
+    # Create input components
+    self.taxa_selector = QComboBox()
+    self.name_input = QLineEdit()
+    self.view_button = QPushButton("View")
+
+    self.taxa_selector.addItems([taxa.value for taxa in ORDERED_TAXA])
+    self.taxa_selector.setFixedWidth(TAXA_SELECTOR_WIDTH)
+    self.taxa_selector.currentIndexChanged.connect(self.on_change_selected_taxa)
+    self.on_change_selected_taxa(0)
+
+    self.name_input.textChanged.connect(self.on_name_text_changed)
+    self.name_input.setFixedWidth(NAME_INPUT_WIDTH)
+    self.on_name_text_changed("")
+
+    self.view_button.setFixedWidth(BUTTON_WIDTH)
+    self.view_button.clicked.connect(self.on_view_button_clicked)
+
+    # Create right buttons
+    self.save_button = QPushButton("Save")
+    self.save_button.setEnabled(False)
+    self.save_button.setToolTip("No image to save")
+    self.save_button.setFixedWidth(BUTTON_WIDTH)
+    self.save_button.clicked.connect(self.on_save_button_clicked)
+
+    quit_button = QPushButton("Quit")
+    quit_button.setFixedWidth(BUTTON_WIDTH)
+    quit_button.clicked.connect(self.on_quit_button_clicked)
+
+    # Group inputs on left
+    left_bar_inputs_hbox = QHBoxLayout()
+    left_bar_inputs_hbox.addWidget(self.taxa_selector)
+    left_bar_inputs_hbox.addWidget(self.name_input)
+    left_bar_inputs_hbox.addWidget(self.view_button)
+
+    # Group buttons on right
+    right_buttons_hbox = QHBoxLayout()
+    right_buttons_hbox.addWidget(self.save_button)
+    right_buttons_hbox.addWidget(quit_button)
+
+    # Add inputs and right buttons to toolbar component
+    toolbar_hbox = QHBoxLayout()
+    toolbar_hbox.addLayout(left_bar_inputs_hbox)
+    toolbar_hbox.addStretch()
+    toolbar_hbox.addLayout(right_buttons_hbox)
+    toolbar_hbox.setAlignment(Qt.AlignLeft)
+
+    return toolbar_hbox
+
+  def build_init_preview(self):
+    self.preview_text = QLabel()
+    self.preview_text.setText("Select strains to visualize")
+
+    self.preview = QVBoxLayout()
+    self.preview.addWidget(self.preview_text, 0, Qt.AlignHCenter)
+
+    return self.preview
+
   def on_change_selected_taxa(self, i):
     taxa = ORDERED_TAXA[i]
-    self.selected_taxa = taxa
+    self.current_taxa = taxa
     self.name_input.clear()
     self.name_input.setCompleter(self.name_input_completers[taxa])
   
   def on_name_text_changed(self, name):
     self.current_name = name
-    is_valid = name in self.strains[self.selected_taxa]
+    is_valid = name in self.strains[self.current_taxa]
     if is_valid:
-      self.submit_button.setEnabled(True)
-      self.submit_button.setToolTip("")
+      self.view_button.setEnabled(True)
+      self.view_button.setToolTip("")
     else:
-      self.submit_button.setEnabled(False)
+      self.view_button.setEnabled(False)
       tooltip = "Input name of strain" if name == "" else f"No strains found with name \"{name}\""
-      self.submit_button.setToolTip(tooltip)
+      self.view_button.setToolTip(tooltip)
   
-  def on_submit_button_clicked(self):
-    print("<Visualize>")
+  def on_view_button_clicked(self):
+    if self.current_viewed_strains is None:
+      self.save_button.setEnabled(True)
+      self.save_button.setToolTip("")
+
+    strains = self.strains[self.current_taxa][self.current_name]
+    self.current_viewed_strains = strains
+    self.current_viewed_name = self.current_name
+
+    # Find full taxonomic hierarchy
+    strain = strains[0]
+    current_taxon_index = ORDERED_TAXA.index(self.current_taxa)
+    hierarchy = [strain.get_taxa_name(ORDERED_TAXA[i]) for i in range(current_taxon_index + 1)]
+
+    self.preview_text.setText("  >  ".join(hierarchy))
+  
+  def on_save_button_clicked(self):
+    file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png")
+    if file_name != "":
+      print(f"<Saved {file_name}>")
+  
+  def on_quit_button_clicked(self):
+    self.app.exit()
 
 def init(strains):
   app = QApplication([])
-  window = Window(strains)
+  window = Window(app, strains)
   sys.exit(app.exec_())
