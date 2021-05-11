@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Taxa(Enum):
+class Taxon(Enum):
   PHYLUM = 'Phylum'
   CLASS = 'Class'
   ORDER = 'Order'
@@ -8,4 +8,4 @@ class Taxa(Enum):
   GENUS = 'Genus'
   SPECIES = 'Species'
 
-ORDERED_TAXA = [Taxa.PHYLUM, Taxa.CLASS, Taxa.ORDER, Taxa.FAMILY, Taxa.GENUS, Taxa.SPECIES]
+TAXA = [Taxon.PHYLUM, Taxon.CLASS, Taxon.ORDER, Taxon.FAMILY, Taxon.GENUS, Taxon.SPECIES]

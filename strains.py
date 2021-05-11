@@ -1,16 +1,16 @@
 import csv
 
-from taxa import ORDERED_TAXA, Taxa
+from taxa import TAXA, Taxon
 
 DATA_FILE_PATH = 'data/Data_file_for_mapping.csv'
 
 TAXA_GETTERS = {
-  Taxa.PHYLUM: lambda strain: strain.phylum,
-  Taxa.CLASS: lambda strain: strain.class_,
-  Taxa.ORDER: lambda strain: strain.order,
-  Taxa.FAMILY: lambda strain: strain.family,
-  Taxa.GENUS: lambda strain: strain.genus,
-  Taxa.SPECIES: lambda strain: strain.species,
+  Taxon.PHYLUM: lambda strain: strain.phylum,
+  Taxon.CLASS: lambda strain: strain.class_,
+  Taxon.ORDER: lambda strain: strain.order,
+  Taxon.FAMILY: lambda strain: strain.family,
+  Taxon.GENUS: lambda strain: strain.genus,
+  Taxon.SPECIES: lambda strain: strain.species,
 }
 
 class Strain:
@@ -56,10 +56,10 @@ def parse_strains_file():
     return strains
 
 def build_strains_index(strains):
-  strains_index = {taxa:dict() for taxa in ORDERED_TAXA}
+  strains_index = {taxa:dict() for taxa in TAXA}
 
   for strain in strains:
-    for taxa in ORDERED_TAXA:
+    for taxa in TAXA:
       name = strain.get_taxa_name(taxa)
       if name is None:
         continue

@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 
 import sys
 
-from taxa import ORDERED_TAXA, Taxa
+from taxa import TAXA, Taxon
 
 BUTTON_WIDTH = 80
 NAME_INPUT_WIDTH = 250
@@ -40,10 +40,10 @@ class Window(QWidget):
 
   def init_name_input_completers(self):
     self.name_input_completers = dict()
-    for taxa, names in self.strains.items():
+    for taxon, names in self.strains.items():
       completer = QCompleter(names)
       completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
-      self.name_input_completers[taxa] = completer
+      self.name_input_completers[taxon] = completer
   
   def build_toolbar(self):
     # Create input components
@@ -51,7 +51,7 @@ class Window(QWidget):
     self.name_input = QLineEdit()
     self.view_button = QPushButton("View")
 
-    self.taxa_selector.addItems([taxa.value for taxa in ORDERED_TAXA])
+    self.taxa_selector.addItems([taxon.value for taxon in TAXA])
     self.taxa_selector.setFixedWidth(TAXA_SELECTOR_WIDTH)
     self.taxa_selector.currentIndexChanged.connect(self.on_change_selected_taxa)
     self.on_change_selected_taxa(0)
@@ -104,14 +104,14 @@ class Window(QWidget):
     return self.preview
 
   def on_change_selected_taxa(self, i):
-    taxa = ORDERED_TAXA[i]
-    self.current_taxa = taxa
+    taxon = TAXA[i]
+    self.current_taxon = taxon
     self.name_input.clear()
-    self.name_input.setCompleter(self.name_input_completers[taxa])
+    self.name_input.setCompleter(self.name_input_completers[taxon])
   
   def on_name_text_changed(self, name):
     self.current_name = name
-    is_valid = name in self.strains[self.current_taxa]
+    is_valid = name in self.strains[self.current_taxon]
     if is_valid:
       self.view_button.setEnabled(True)
       self.view_button.setToolTip("")
@@ -125,14 +125,14 @@ class Window(QWidget):
       self.save_button.setEnabled(True)
       self.save_button.setToolTip("")
 
-    strains = self.strains[self.current_taxa][self.current_name]
+    strains = self.strains[self.current_taxon][self.current_name]
     self.current_viewed_strains = strains
     self.current_viewed_name = self.current_name
 
     # Find full taxonomic hierarchy
     strain = strains[0]
-    current_taxon_index = ORDERED_TAXA.index(self.current_taxa)
-    hierarchy = [strain.get_taxa_name(ORDERED_TAXA[i]) for i in range(current_taxon_index + 1)]
+    current_taxon_index = TAXA.index(self.current_taxon)
+    hierarchy = [strain.get_taxa_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
     self.preview_text.setText("  >  ".join(hierarchy))
   
