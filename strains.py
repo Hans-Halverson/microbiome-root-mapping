@@ -2,7 +2,7 @@ import csv
 
 from taxa import TAXA, Taxon
 
-DATA_FILE_PATH = 'data/Data_file_for_mapping.csv'
+DATA_FILE_PATH = 'Data_file_for_mapping.csv'
 
 TAXA_GETTERS = {
   Taxon.PHYLUM: lambda strain: strain.phylum,

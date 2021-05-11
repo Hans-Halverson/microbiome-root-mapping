@@ -1,10 +1,13 @@
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
 import sys
 
 from taxa import TAXA, Taxon
+
+APP_NAME = "Microbiome Root Mapping"
+ICON_PATH = "icon.png"
 
 BUTTON_WIDTH = 80
 NAME_INPUT_WIDTH = 250
@@ -20,7 +23,8 @@ class Window(QWidget):
     self.current_viewed_name = ""
  
     self.setGeometry(0, 0, 1200, 800)
-    self.setWindowTitle('Microbiome Root Mapping')
+    self.setWindowTitle(APP_NAME)
+    self.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
     self.init_name_input_completers()
     toolbar = self.build_toolbar()
@@ -146,5 +150,9 @@ class Window(QWidget):
 
 def init(strains):
   app = QApplication([])
+  app.setApplicationName(APP_NAME)
+  app.setWindowIcon(QtGui.QIcon(ICON_PATH))
+
   window = Window(app, strains)
+
   sys.exit(app.exec_())
