@@ -3,6 +3,7 @@ import csv
 from taxa import TAXA, Taxon
 
 DATA_FILE_PATH = 'Data_file_for_mapping.csv'
+ASV_KEY = 'ASV'
 
 TAXA_GETTERS = {
   Taxon.PHYLUM: lambda strain: strain.phylum,
@@ -24,7 +25,7 @@ class Strain:
     self.species = species
     self.values = values
   
-  def get_taxa_name(self, taxa):
+  def get_taxon_name(self, taxa):
     return TAXA_GETTERS[taxa](self)
 
 def parse_taxa_name(name, prefix):
@@ -57,10 +58,11 @@ def parse_strains_file():
 
 def build_strains_index(strains):
   strains_index = {taxa:dict() for taxa in TAXA}
+  strains_index[ASV_KEY] = dict()
 
   for strain in strains:
     for taxa in TAXA:
-      name = strain.get_taxa_name(taxa)
+      name = strain.get_taxon_name(taxa)
       if name is None:
         continue
 
@@ -68,5 +70,8 @@ def build_strains_index(strains):
         strains_index[taxa][name].append(strain)
       else:
         strains_index[taxa][name] = [strain]
+    
+    # Index by ASV id
+    strains_index[ASV_KEY][strain.id] = [strain]
 
   return strains_index

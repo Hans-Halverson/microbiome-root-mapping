@@ -1,24 +1,28 @@
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
 import sys
 
-from taxa import TAXA, Taxon
+from strains import ASV_KEY
+from taxa import TAXA
 
 APP_NAME = "Microbiome Root Mapping"
 ICON_PATH = "icon.png"
+
+ASV_SELECTOR_INDEX = len(TAXA)
 
 BUTTON_WIDTH = 80
 NAME_INPUT_WIDTH = 250
 TAXA_SELECTOR_WIDTH = 100
 
+
 class Window(QWidget):
-  def __init__(self, app, strains):
+  def __init__(self, app, indexed_strains):
     super().__init__()
 
     self.app = app
-    self.strains = strains
+    self.indexed_strains = indexed_strains
     self.current_viewed_strains = None
     self.current_viewed_name = ""
  
@@ -44,9 +48,14 @@ class Window(QWidget):
 
   def init_name_input_completers(self):
     self.name_input_completers = dict()
-    for taxon, names in self.strains.items():
-      completer = QCompleter(names)
+    for taxon, names in self.indexed_strains.items():
+      if taxon == ASV_KEY:
+        sorted_names = sorted(names, key=lambda name: int(name[4:]))
+      else:
+        sorted_names = sorted(names)
+      completer = QCompleter(sorted_names)
       completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+      completer.setMaxVisibleItems(20)
       self.name_input_completers[taxon] = completer
   
   def build_toolbar(self):
@@ -55,7 +64,7 @@ class Window(QWidget):
     self.name_input = QLineEdit()
     self.view_button = QPushButton("View")
 
-    self.taxa_selector.addItems([taxon.value for taxon in TAXA])
+    self.taxa_selector.addItems([taxon.value for taxon in TAXA] + [ASV_KEY])
     self.taxa_selector.setFixedWidth(TAXA_SELECTOR_WIDTH)
     self.taxa_selector.currentIndexChanged.connect(self.on_change_selected_taxa)
     self.on_change_selected_taxa(0)
@@ -108,14 +117,14 @@ class Window(QWidget):
     return self.preview
 
   def on_change_selected_taxa(self, i):
-    taxon = TAXA[i]
+    taxon = TAXA[i] if i < ASV_SELECTOR_INDEX else ASV_KEY
     self.current_taxon = taxon
     self.name_input.clear()
     self.name_input.setCompleter(self.name_input_completers[taxon])
   
   def on_name_text_changed(self, name):
     self.current_name = name
-    is_valid = name in self.strains[self.current_taxon]
+    is_valid = name in self.indexed_strains[self.current_taxon]
     if is_valid:
       self.view_button.setEnabled(True)
       self.view_button.setToolTip("")
@@ -129,14 +138,18 @@ class Window(QWidget):
       self.save_button.setEnabled(True)
       self.save_button.setToolTip("")
 
-    strains = self.strains[self.current_taxon][self.current_name]
+    strains = self.indexed_strains[self.current_taxon][self.current_name]
     self.current_viewed_strains = strains
     self.current_viewed_name = self.current_name
 
     # Find full taxonomic hierarchy
     strain = strains[0]
-    current_taxon_index = TAXA.index(self.current_taxon)
-    hierarchy = [strain.get_taxa_name(TAXA[i]) for i in range(current_taxon_index + 1)]
+    if self.current_taxon == ASV_KEY:
+      first_missing_taxon = next(filter(lambda taxon: strain.get_taxon_name(taxon) is None, TAXA), None)
+      current_taxon_index = len(TAXA) - 1 if first_missing_taxon is None else TAXA.index(first_missing_taxon) - 1
+    else:
+      current_taxon_index = TAXA.index(self.current_taxon)
+    hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
     self.preview_text.setText("  >  ".join(hierarchy))
   
@@ -148,11 +161,11 @@ class Window(QWidget):
   def on_quit_button_clicked(self):
     self.app.exit()
 
-def init(strains):
+def init(indexed_strains):
   app = QApplication([])
   app.setApplicationName(APP_NAME)
   app.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
-  window = Window(app, strains)
+  window = Window(app, indexed_strains)
 
   sys.exit(app.exec_())
