@@ -2,13 +2,14 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
+from os import path
 import sys
 
 from strains import ASV_KEY
 from taxa import TAXA
 
 APP_NAME = "Microbiome Root Mapping"
-ICON_PATH = "icon.png"
+ICON_PATH = path.join(path.dirname(__file__), "resources", "icon.png")
 
 ASV_SELECTOR_INDEX = len(TAXA)
 

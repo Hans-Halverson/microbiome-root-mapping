@@ -1,2 +1,5 @@
 *.pyc
 .DS_Store
+Microbiome Root Mapping.spec
+build
+dist

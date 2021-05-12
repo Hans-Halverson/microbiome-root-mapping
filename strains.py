@@ -1,8 +1,9 @@
 import csv
+from os import path
 
 from taxa import TAXA, Taxon
 
-DATA_FILE_PATH = 'Data_file_for_mapping.csv'
+DATA_FILE_PATH = path.join(path.dirname(__file__), 'resources', 'Data_file_for_mapping.csv')
 ASV_KEY = 'ASV'
 
 TAXA_GETTERS = {
