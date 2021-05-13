@@ -7,6 +7,7 @@ import sys
 
 from strains import ASV_KEY
 from taxa import TAXA
+from visualize import IMAGE_HEIGHT, IMAGE_WIDTH, render_image
 
 APP_NAME = "Microbiome Root Mapping"
 ICON_PATH = path.join(path.dirname(__file__), "resources", "icon.png")
@@ -17,6 +18,11 @@ BUTTON_WIDTH = 80
 NAME_INPUT_WIDTH = 250
 TAXA_SELECTOR_WIDTH = 100
 
+IMAGE_PREVIEW_WIDTH = 1200
+IMAGE_PREVIEW_HEIGHT = 675
+
+WINDOW_WIDTH = IMAGE_PREVIEW_WIDTH + 40
+WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + 110
 
 class Window(QWidget):
   def __init__(self, app, indexed_strains):
@@ -25,9 +31,10 @@ class Window(QWidget):
     self.app = app
     self.indexed_strains = indexed_strains
     self.current_viewed_strains = None
-    self.current_viewed_name = ""
+    self.current_viewed_name = "image"
  
-    self.setGeometry(0, 0, 1200, 800)
+    self.setGeometry(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)
+    self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
     self.setWindowTitle(APP_NAME)
     self.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
@@ -42,7 +49,7 @@ class Window(QWidget):
     vbox = QVBoxLayout()
     vbox.addLayout(toolbar)
     vbox.addWidget(vbox_divider)
-    vbox.addLayout(preview, 1)
+    vbox.addWidget(preview, 1)
 
     self.setLayout(vbox)
     self.show()
@@ -78,10 +85,8 @@ class Window(QWidget):
     self.view_button.clicked.connect(self.on_view_button_clicked)
 
     # Create right buttons
-    self.save_button = QPushButton("Save")
-    self.save_button.setEnabled(False)
-    self.save_button.setToolTip("No image to save")
-    self.save_button.setFixedWidth(BUTTON_WIDTH)
+    self.save_button = QPushButton("Save Image")
+    self.save_button.setFixedWidth(BUTTON_WIDTH * 1.5)
     self.save_button.clicked.connect(self.on_save_button_clicked)
 
     quit_button = QPushButton("Quit")
@@ -109,11 +114,10 @@ class Window(QWidget):
     return toolbar_hbox
 
   def build_init_preview(self):
-    self.preview_text = QLabel()
-    self.preview_text.setText("Select strains to visualize")
-
-    self.preview = QVBoxLayout()
-    self.preview.addWidget(self.preview_text, 0, Qt.AlignHCenter)
+    self.preview = QLabel()
+    self.preview.setScaledContents(True)
+    self.preview.setFixedSize(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT)
+    self.render_preview([], [])
 
     return self.preview
 
@@ -135,10 +139,6 @@ class Window(QWidget):
       self.view_button.setToolTip(tooltip)
   
   def on_view_button_clicked(self):
-    if self.current_viewed_strains is None:
-      self.save_button.setEnabled(True)
-      self.save_button.setToolTip("")
-
     strains = self.indexed_strains[self.current_taxon][self.current_name]
     self.current_viewed_strains = strains
     self.current_viewed_name = self.current_name
@@ -152,12 +152,19 @@ class Window(QWidget):
       current_taxon_index = TAXA.index(self.current_taxon)
     hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
-    self.preview_text.setText("  >  ".join(hierarchy))
+    self.render_preview(strains, hierarchy)
+  
+  def render_preview(self, strains, hierarchy):
+    self.current_image = render_image(strains, hierarchy)
+    image_bytes = self.current_image.tobytes("raw", "BGRA")
+    qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
+    pixmap = QtGui.QPixmap.fromImage(qt_image)
+    self.preview.setPixmap(pixmap)
   
   def on_save_button_clicked(self):
     file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png")
     if file_name != "":
-      print(f"<Saved {file_name}>")
+      self.current_image.save(file_name)
   
   def on_quit_button_clicked(self):
     self.app.exit()
