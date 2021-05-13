@@ -6,5 +6,4 @@ pyinstaller main.py ^
   --onefile ^
   -w ^
   -i resources\icon.ico ^
-  --add-data resources\Data_file_for_mapping.csv;resources ^
-  --add-data resources\icon.png;resources
+  --add-data resources;resources
