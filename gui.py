@@ -197,7 +197,7 @@ class Window(QWidget):
     self.hide_name = hide_name
 
   def on_save_button_clicked(self):
-    file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png")
+    file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png", "Images (*.png)")
     if file_name != "":
       try:
         self.current_image.save(file_name)
