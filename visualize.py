@@ -47,7 +47,10 @@ def render_image(strains, hierarchy, color):
 
   for i, value in enumerate(values):
     if value != 0.0:
-      scaled_value = min(value * 5, 1.0)
+      # Normalize value to be on scale from 0.0 to 1.0, since highest value is approximately 0.2
+      norm_value = min(value * 5, 1.0)
+
+      scaled_value = norm_value
       alpha_mask = MASKS[i].point(lambda x: x * scaled_value)
 
       layer = color_image.copy()
