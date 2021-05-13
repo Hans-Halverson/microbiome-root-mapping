@@ -1,5 +1,5 @@
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
 from os import path
@@ -199,7 +199,12 @@ class Window(QWidget):
   def on_save_button_clicked(self):
     file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png")
     if file_name != "":
-      self.current_image.save(file_name)
+      try:
+        self.current_image.save(file_name)
+      except:
+        error = QErrorMessage(self)
+        error.showMessage("Could not save file")
+        error.setWindowModality(Qt.WindowModal)
   
   def on_quit_button_clicked(self):
     self.app.exit()
