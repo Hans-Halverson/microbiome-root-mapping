@@ -12,11 +12,17 @@ TEMPLATE = Image.open(TEMPLATE_PATH, 'r')
 ARIAL_FONT_PATH = path.join(path.dirname(__file__), 'resources', 'arial.ttf')
 HIERARCHY_FONT = ImageFont.truetype(ARIAL_FONT_PATH, size=20)
 
+COLOR_IMAGE = Image.new('RGB', (IMAGE_WIDTH, IMAGE_HEIGHT), (255, 0, 0))
+WHITE_IMAGE = Image.new('RGBA', (IMAGE_WIDTH, IMAGE_HEIGHT), (255, 255, 255, 255))
+
 def load_masks():
   masks = []
   for i in range(1, NUM_MASKS + 1):
     mask_path = path.join(path.dirname(__file__), 'resources', f'{i}_mask-01.png')
-    masks.append(Image.open(mask_path))
+    mask_image = Image.open(mask_path)
+    # Only alpha channel of masks are used
+    mask = mask_image.getchannel(3)
+    masks.append(mask)
   
   return masks
 
@@ -30,17 +36,24 @@ def sum_strain_values(strains):
   
   return sums
 
-def render_image(strains, hierarchy):
+def render_image(strains, hierarchy, color):
   values = sum_strain_values(strains)
 
-  image = Image.new('RGBA', (IMAGE_WIDTH, IMAGE_HEIGHT), (255, 255, 255, 255))
+  color_image = Image.new('RGB', (IMAGE_WIDTH, IMAGE_HEIGHT), color)
+  image = WHITE_IMAGE.copy()
 
   draw = ImageDraw.Draw(image)
   draw.text((10, 10), "  >  ".join(hierarchy), fill=(0, 0, 0, 255), font=HIERARCHY_FONT)
 
   for i, value in enumerate(values):
     if value != 0.0:
-      image.alpha_composite(MASKS[i])
+      scaled_value = min(value * 5, 1.0)
+      alpha_mask = MASKS[i].point(lambda x: x * scaled_value)
+
+      layer = color_image.copy()
+      layer.putalpha(alpha_mask)
+
+      image.alpha_composite(layer)
 
   image.alpha_composite(TEMPLATE)
 

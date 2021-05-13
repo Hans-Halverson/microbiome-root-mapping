@@ -1,5 +1,5 @@
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
 from os import path
@@ -32,6 +32,8 @@ class Window(QWidget):
     self.indexed_strains = indexed_strains
     self.current_viewed_strains = None
     self.current_viewed_name = "image"
+    self.current_color = (255, 0, 0)
+    self.hide_name = False
  
     self.setGeometry(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)
     self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
@@ -67,7 +69,7 @@ class Window(QWidget):
       self.name_input_completers[taxon] = completer
   
   def build_toolbar(self):
-    # Create input components
+    # Create name input components
     self.taxa_selector = QComboBox()
     self.name_input = QLineEdit()
     self.view_button = QPushButton("View")
@@ -84,6 +86,17 @@ class Window(QWidget):
     self.view_button.setFixedWidth(BUTTON_WIDTH)
     self.view_button.clicked.connect(self.on_view_button_clicked)
 
+    # Create visualize input components
+    self.choose_color_button = QPushButton("Choose Color")
+    self.choose_color_button.setFixedWidth(BUTTON_WIDTH * 1.65)
+    self.choose_color_button.setToolTip("Choose color for image")
+    self.choose_color_button.clicked.connect(self.on_choose_color_button_clicked)
+    self.update_choose_color_preview()
+
+    hide_name_checkbox = QCheckBox("Hide Name")
+    hide_name_checkbox.setToolTip("Do not show name on image")
+    hide_name_checkbox.toggled.connect(self.on_hide_name_checkbox_toggled)
+
     # Create right buttons
     self.save_button = QPushButton("Save Image")
     self.save_button.setFixedWidth(BUTTON_WIDTH * 1.5)
@@ -93,11 +106,16 @@ class Window(QWidget):
     quit_button.setFixedWidth(BUTTON_WIDTH)
     quit_button.clicked.connect(self.on_quit_button_clicked)
 
-    # Group inputs on left
-    left_bar_inputs_hbox = QHBoxLayout()
-    left_bar_inputs_hbox.addWidget(self.taxa_selector)
-    left_bar_inputs_hbox.addWidget(self.name_input)
-    left_bar_inputs_hbox.addWidget(self.view_button)
+    # Group name inputs on left
+    name_inputs_hbox = QHBoxLayout()
+    name_inputs_hbox.addWidget(self.taxa_selector)
+    name_inputs_hbox.addWidget(self.name_input)
+    name_inputs_hbox.addWidget(self.view_button)
+
+    # Group visualize inputs in middle
+    visualize_inputs_hbox = QHBoxLayout()
+    visualize_inputs_hbox.addWidget(self.choose_color_button)
+    visualize_inputs_hbox.addWidget(hide_name_checkbox)
 
     # Group buttons on right
     right_buttons_hbox = QHBoxLayout()
@@ -106,7 +124,9 @@ class Window(QWidget):
 
     # Add inputs and right buttons to toolbar component
     toolbar_hbox = QHBoxLayout()
-    toolbar_hbox.addLayout(left_bar_inputs_hbox)
+    toolbar_hbox.addLayout(name_inputs_hbox)
+    toolbar_hbox.addStretch()
+    toolbar_hbox.addLayout(visualize_inputs_hbox)
     toolbar_hbox.addStretch()
     toolbar_hbox.addLayout(right_buttons_hbox)
     toolbar_hbox.setAlignment(Qt.AlignLeft)
@@ -153,14 +173,29 @@ class Window(QWidget):
     hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
     self.render_preview(strains, hierarchy)
-  
+    
   def render_preview(self, strains, hierarchy):
-    self.current_image = render_image(strains, hierarchy)
+    self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
     qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
     pixmap = QtGui.QPixmap.fromImage(qt_image)
     self.preview.setPixmap(pixmap)
+
+  def on_choose_color_button_clicked(self):
+    initial_color = QtGui.QColor(self.current_color[0], self.current_color[1], self.current_color[2])
+    color = QColorDialog.getColor(initial_color)
+    if color.isValid():
+      self.current_color = (color.red(), color.green(), color.blue())
+      self.update_choose_color_preview()
+
+  def update_choose_color_preview(self):
+    color_pixmap = QtGui.QPixmap(10, 10)
+    color_pixmap.fill(QtGui.QColor(self.current_color[0], self.current_color[1], self.current_color[2]))
+    self.choose_color_button.setIcon(QtGui.QIcon(color_pixmap))
   
+  def on_hide_name_checkbox_toggled(self, hide_name):
+    self.hide_name = hide_name
+
   def on_save_button_clicked(self):
     file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png")
     if file_name != "":
