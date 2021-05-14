@@ -215,9 +215,9 @@ class Window(QWidget):
   def render_preview(self, strains, hierarchy):
     self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
-    qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
-    self.pixmap = QtGui.QPixmap.fromImage(qt_image)
-    self.preview.setPixmap(self.pixmap.scaled(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT))
+    self.qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
+    # pixmap = QtGui.QPixmap.fromImage(self.qt_image.smoothScaled(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT))
+    # self.preview.setPixmap(pixmap)
     self.resize_preview_image()
 
   def on_scale_slider_change(self, scale):
@@ -263,7 +263,8 @@ class Window(QWidget):
   def resize_preview_image(self):
     width = self.width() - WINDOW_WIDTH_PADDING
     height = (float(IMAGE_PREVIEW_HEIGHT) / float(IMAGE_PREVIEW_WIDTH)) * width
-    self.preview.setPixmap(self.pixmap.scaled(width, height))
+    pixmap = QtGui.QPixmap.fromImage(self.qt_image.smoothScaled(width, height))
+    self.preview.setPixmap(pixmap)
 
   def resizeEvent(self, _event):
     self.resize_preview_image()
