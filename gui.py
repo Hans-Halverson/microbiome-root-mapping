@@ -29,6 +29,9 @@ WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + WINDOW_HEIGHT_PADDING
 
 RENDER_DEBOUNCE_TIMEOUT = 200
 
+# Only allow strains to be selected for display if the sum of their abundances is greater than this threshold
+ABUNDANCE_DISPLAY_THRESHOLD = 0.0055
+
 class Window(QWidget):
   def __init__(self, app, all_strains, indexed_strains):
     super().__init__()
@@ -70,20 +73,18 @@ class Window(QWidget):
 
   def init_name_input_completers(self):
     # Determine which strains should be displayed
-    strains_to_display = set()
-    taxa_to_display = {taxon:set() for taxon in TAXA}
-    taxa_to_display[ASV_KEY] = set()
+    strains_to_display = {taxon:set() for taxon in TAXA}
+    strains_to_display[ASV_KEY] = set()
     for strain in self.all_strains:
-      if sum(strain.values) > 0.0055:
-        strains_to_display.add(strain)
+      if sum(strain.abundances) > ABUNDANCE_DISPLAY_THRESHOLD:
         for taxon in TAXA:
           name = strain.get_taxon_name(taxon)
           if name is not None:
-            taxa_to_display[taxon].add(strain.get_taxon_name(taxon))
-        taxa_to_display[ASV_KEY].add(strain.id)
-
+            strains_to_display[taxon].add(strain.get_taxon_name(taxon))
+        strains_to_display[ASV_KEY].add(strain.id)
+    
     self.name_input_completers = dict()
-    for taxon, names in taxa_to_display.items():      
+    for taxon, names in strains_to_display.items():
       if taxon == ASV_KEY:
         sorted_names = sorted(names, key=lambda name: int(name[4:]))
       else:

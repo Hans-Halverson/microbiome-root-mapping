@@ -16,7 +16,7 @@ TAXA_GETTERS = {
 }
 
 class Strain:
-  def __init__(self, id, phylum, class_, order, family, genus, species, values):
+  def __init__(self, id, phylum, class_, order, family, genus, species, abundances):
     self.id = id
     self.phylum = phylum
     self.class_ = class_
@@ -24,12 +24,12 @@ class Strain:
     self.family = family
     self.genus = genus
     self.species = species
-    self.values = values
+    self.abundances = abundances
   
-  def get_taxon_name(self, taxa):
-    return TAXA_GETTERS[taxa](self)
+  def get_taxon_name(self, taxon):
+    return TAXA_GETTERS[taxon](self)
 
-def parse_taxa_name(name, prefix):
+def parse_taxon_name(name, prefix):
   if name == "na":
     return None
   
@@ -43,34 +43,34 @@ def parse_strains_file():
 
     strains = []
     for row in reader:
-      phylum = parse_taxa_name(row[0], "p__")
-      class_ = parse_taxa_name(row[1], "c__")
-      order = parse_taxa_name(row[2], "o__")
-      family = parse_taxa_name(row[3], "f__")
-      genus = parse_taxa_name(row[4], "g__")
-      species = parse_taxa_name(row[5], "s__")
+      phylum = parse_taxon_name(row[0], "p__")
+      class_ = parse_taxon_name(row[1], "c__")
+      order = parse_taxon_name(row[2], "o__")
+      family = parse_taxon_name(row[3], "f__")
+      genus = parse_taxon_name(row[4], "g__")
+      species = parse_taxon_name(row[5], "s__")
       id = row[6]
-      values = [float(value) for value in row[7:]]
+      abundances = [float(abundance) for abundance in row[7:]]
 
-      strain = Strain(id, phylum, class_, order, family, genus, species, values)
+      strain = Strain(id, phylum, class_, order, family, genus, species, abundances)
       strains.append(strain)
 
     return strains
 
 def build_strains_index(strains):
-  strains_index = {taxa:dict() for taxa in TAXA}
+  strains_index = {taxon:dict() for taxon in TAXA}
   strains_index[ASV_KEY] = dict()
 
   for strain in strains:
-    for taxa in TAXA:
-      name = strain.get_taxon_name(taxa)
+    for taxon in TAXA:
+      name = strain.get_taxon_name(taxon)
       if name is None:
         continue
 
-      if name in strains_index[taxa]:
-        strains_index[taxa][name].append(strain)
+      if name in strains_index[taxon]:
+        strains_index[taxon][name].append(strain)
       else:
-        strains_index[taxa][name] = [strain]
+        strains_index[taxon][name] = [strain]
     
     # Index by ASV id
     strains_index[ASV_KEY][strain.id] = [strain]
