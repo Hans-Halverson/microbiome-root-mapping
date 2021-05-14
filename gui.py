@@ -105,6 +105,7 @@ class Window(QWidget):
     self.name_input.textChanged.connect(self.on_name_text_changed)
     self.name_input.setFixedWidth(NAME_INPUT_WIDTH)
     self.name_input.setCompleter(self.name_input_completers[self.current_taxon])
+    self.name_input.setToolTip("Search for phlyum to display")
     self.on_name_text_changed("")
 
     # Create visualize input components
@@ -185,6 +186,7 @@ class Window(QWidget):
     self.current_taxon = taxon
     self.name_input.clear()
     self.name_input.setCompleter(self.name_input_completers[taxon])
+    self.name_input.setToolTip(f"Search for {'ASV' if taxon == ASV_KEY else taxon.value.lower()} to display")
     self.render_preview()
   
   def on_name_text_changed(self, name):
