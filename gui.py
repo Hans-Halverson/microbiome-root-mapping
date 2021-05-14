@@ -175,8 +175,6 @@ class Window(QWidget):
   def build_init_preview(self):
     self.preview = QLabel()
     self.preview.setMinimumSize(1, 1)
-    # self.preview.setScaledContents(True)
-    # self.preview.setFixedSize(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT)
     self.render_preview([], [])
 
     return self.preview
@@ -220,6 +218,7 @@ class Window(QWidget):
     qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
     self.pixmap = QtGui.QPixmap.fromImage(qt_image)
     self.preview.setPixmap(self.pixmap.scaled(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT))
+    self.resize_preview_image()
 
   def on_scale_slider_change(self, scale):
     self.current_scale = scale
@@ -261,10 +260,13 @@ class Window(QWidget):
   def on_quit_button_clicked(self):
     self.app.exit()
 
-  def resizeEvent(self, _event):
+  def resize_preview_image(self):
     width = self.width() - WINDOW_WIDTH_PADDING
     height = (float(IMAGE_PREVIEW_HEIGHT) / float(IMAGE_PREVIEW_WIDTH)) * width
     self.preview.setPixmap(self.pixmap.scaled(width, height))
+
+  def resizeEvent(self, _event):
+    self.resize_preview_image()
 
 def init(all_strains, indexed_strains):
   app = QApplication([])
