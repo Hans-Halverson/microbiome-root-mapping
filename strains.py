@@ -35,6 +35,9 @@ def parse_taxa_name(name, prefix):
   
   return name[len(prefix):] if name.startswith(prefix) else name
 
+import numpy as np
+from matplotlib import pyplot as plt
+
 def parse_strains_file():
   with open(DATA_FILE_PATH) as data_file:
     reader = csv.reader(data_file)
@@ -54,7 +57,7 @@ def parse_strains_file():
 
       strain = Strain(id, phylum, class_, order, family, genus, species, values)
       strains.append(strain)
-    
+
     return strains
 
 def build_strains_index(strains):

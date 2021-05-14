@@ -1,12 +1,12 @@
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QSlider, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt
 
 from os import path
 import sys
 
 from strains import ASV_KEY
-from taxa import TAXA
+from taxa import TAXA, Taxon
 from visualize import IMAGE_HEIGHT, IMAGE_WIDTH, render_image
 
 APP_NAME = "Microbiome Root Mapping"
@@ -25,13 +25,15 @@ WINDOW_WIDTH = IMAGE_PREVIEW_WIDTH + 40
 WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + 110
 
 class Window(QWidget):
-  def __init__(self, app, indexed_strains):
+  def __init__(self, app, all_strains, indexed_strains):
     super().__init__()
 
     self.app = app
+    self.all_strains = all_strains
     self.indexed_strains = indexed_strains
     self.current_viewed_strains = None
     self.current_viewed_name = "image"
+    self.current_scale = 1000
     self.current_color = (255, 0, 0)
     self.hide_name = False
  
@@ -57,8 +59,21 @@ class Window(QWidget):
     self.show()
 
   def init_name_input_completers(self):
+    # Determine which strains should be displayed
+    strains_to_display = set()
+    taxa_to_display = {taxon:set() for taxon in TAXA}
+    taxa_to_display[ASV_KEY] = set()
+    for strain in self.all_strains:
+      if sum(strain.values) > 0.0055:
+        strains_to_display.add(strain)
+        for taxon in TAXA:
+          name = strain.get_taxon_name(taxon)
+          if name is not None:
+            taxa_to_display[taxon].add(strain.get_taxon_name(taxon))
+        taxa_to_display[ASV_KEY].add(strain.id)
+
     self.name_input_completers = dict()
-    for taxon, names in self.indexed_strains.items():
+    for taxon, names in taxa_to_display.items():      
       if taxon == ASV_KEY:
         sorted_names = sorted(names, key=lambda name: int(name[4:]))
       else:
@@ -87,6 +102,17 @@ class Window(QWidget):
     self.view_button.clicked.connect(self.on_view_button_clicked)
 
     # Create visualize input components
+    self.scale_text_input = QLineEdit()
+    self.scale_text_input.setText(str(self.current_scale))
+    self.scale_text_input.setFixedWidth(40)
+    self.scale_text_input.textEdited.connect(self.on_scale_text_input_edited)
+
+    self.scale_slider = QSlider(Qt.Horizontal)
+    self.scale_slider.setMinimum(1)
+    self.scale_slider.setMaximum(5000)
+    self.scale_slider.setValue(self.current_scale)
+    self.scale_slider.valueChanged.connect(self.on_scale_slider_change)
+
     self.choose_color_button = QPushButton("Choose Color")
     self.choose_color_button.setFixedWidth(BUTTON_WIDTH * 1.65)
     self.choose_color_button.setToolTip("Choose color for image")
@@ -114,6 +140,9 @@ class Window(QWidget):
 
     # Group visualize inputs in middle
     visualize_inputs_hbox = QHBoxLayout()
+    visualize_inputs_hbox.addWidget(QLabel("Scale:"))
+    visualize_inputs_hbox.addWidget(self.scale_text_input)
+    visualize_inputs_hbox.addWidget(self.scale_slider)
     visualize_inputs_hbox.addWidget(self.choose_color_button)
     visualize_inputs_hbox.addWidget(hide_name_checkbox)
 
@@ -175,11 +204,23 @@ class Window(QWidget):
     self.render_preview(strains, hierarchy)
     
   def render_preview(self, strains, hierarchy):
-    self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color)
+    self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
     qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
     pixmap = QtGui.QPixmap.fromImage(qt_image)
     self.preview.setPixmap(pixmap)
+
+  def on_scale_slider_change(self, scale):
+    self.current_scale = scale
+    self.scale_text_input.setText(str(scale))
+
+  def on_scale_text_input_edited(self, value):
+    try:
+      value = int(value)
+    except:
+      value = 1
+    
+    self.scale_slider.setValue(int(value))
 
   def on_choose_color_button_clicked(self):
     initial_color = QtGui.QColor(self.current_color[0], self.current_color[1], self.current_color[2])
@@ -209,11 +250,11 @@ class Window(QWidget):
   def on_quit_button_clicked(self):
     self.app.exit()
 
-def init(indexed_strains):
+def init(all_strains, indexed_strains):
   app = QApplication([])
   app.setApplicationName(APP_NAME)
   app.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
-  window = Window(app, indexed_strains)
+  window = Window(app, all_strains, indexed_strains)
 
   sys.exit(app.exec_())

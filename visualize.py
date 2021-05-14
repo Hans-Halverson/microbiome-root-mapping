@@ -29,14 +29,21 @@ def load_masks():
 MASKS = load_masks()
 
 def sum_strain_values(strains):
+  if len(strains) == 0:
+    return []
+
   sums = [0.0] * NUM_MASKS
   for strain in strains:
     for i, value in enumerate(strain.values):
       sums[i] += value
   
-  return sums
+  averages = []
+  for sum in sums:
+    averages.append(sum / len(strains))
+  
+  return averages
 
-def render_image(strains, hierarchy, color):
+def render_image(strains, hierarchy, color, scale):
   values = sum_strain_values(strains)
 
   color_image = Image.new('RGB', (IMAGE_WIDTH, IMAGE_HEIGHT), color)
@@ -48,7 +55,7 @@ def render_image(strains, hierarchy, color):
   for i, value in enumerate(values):
     if value != 0.0:
       # Normalize value to be on scale from 0.0 to 1.0, since highest value is approximately 0.2
-      norm_value = min(value * 5, 1.0)
+      norm_value = min(value * scale, 1.0)
 
       scaled_value = norm_value
       alpha_mask = MASKS[i].point(lambda x: x * scaled_value)
