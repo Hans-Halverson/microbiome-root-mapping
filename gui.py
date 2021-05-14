@@ -21,8 +21,11 @@ TAXA_SELECTOR_WIDTH = 100
 IMAGE_PREVIEW_WIDTH = 1200
 IMAGE_PREVIEW_HEIGHT = 675
 
-WINDOW_WIDTH = IMAGE_PREVIEW_WIDTH + 40
-WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + 110
+WINDOW_WIDTH_PADDING = 40
+WINDOW_HEIGHT_PADDING = 110
+
+WINDOW_WIDTH = IMAGE_PREVIEW_WIDTH + WINDOW_WIDTH_PADDING
+WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + WINDOW_HEIGHT_PADDING
 
 class Window(QWidget):
   def __init__(self, app, all_strains, indexed_strains):
@@ -38,7 +41,6 @@ class Window(QWidget):
     self.hide_name = False
  
     self.setGeometry(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)
-    self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
     self.setWindowTitle(APP_NAME)
     self.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
@@ -99,7 +101,7 @@ class Window(QWidget):
     self.on_name_text_changed("")
 
     self.view_button.setFixedSize(QSize(BUTTON_WIDTH * 1.3, 42))
-    self.view_button.setFont(QtGui.QFont("Arial", 15))
+    self.view_button.setFont(QtGui.QFont("Arial", 10 if sys.platform == "win32" else 15))
     self.view_button.clicked.connect(self.on_view_button_clicked)
 
     # Create visualize input components
@@ -172,8 +174,9 @@ class Window(QWidget):
 
   def build_init_preview(self):
     self.preview = QLabel()
-    self.preview.setScaledContents(True)
-    self.preview.setFixedSize(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT)
+    self.preview.setMinimumSize(1, 1)
+    # self.preview.setScaledContents(True)
+    # self.preview.setFixedSize(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT)
     self.render_preview([], [])
 
     return self.preview
@@ -215,8 +218,8 @@ class Window(QWidget):
     self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
     qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
-    pixmap = QtGui.QPixmap.fromImage(qt_image)
-    self.preview.setPixmap(pixmap)
+    self.pixmap = QtGui.QPixmap.fromImage(qt_image)
+    self.preview.setPixmap(self.pixmap.scaled(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT))
 
   def on_scale_slider_change(self, scale):
     self.current_scale = scale
@@ -257,6 +260,11 @@ class Window(QWidget):
   
   def on_quit_button_clicked(self):
     self.app.exit()
+
+  def resizeEvent(self, _event):
+    width = self.width() - WINDOW_WIDTH_PADDING
+    height = (float(IMAGE_PREVIEW_HEIGHT) / float(IMAGE_PREVIEW_WIDTH)) * width
+    self.preview.setPixmap(self.pixmap.scaled(width, height))
 
 def init(all_strains, indexed_strains):
   app = QApplication([])
