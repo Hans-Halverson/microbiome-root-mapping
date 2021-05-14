@@ -12,18 +12,16 @@ TAXA_GETTERS = {
   Taxon.ORDER: lambda strain: strain.order,
   Taxon.FAMILY: lambda strain: strain.family,
   Taxon.GENUS: lambda strain: strain.genus,
-  Taxon.SPECIES: lambda strain: strain.species,
 }
 
 class Strain:
-  def __init__(self, id, phylum, class_, order, family, genus, species, abundances):
+  def __init__(self, id, phylum, class_, order, family, genus, abundances):
     self.id = id
     self.phylum = phylum
     self.class_ = class_
     self.order = order
     self.family = family
     self.genus = genus
-    self.species = species
     self.abundances = abundances
   
   def get_taxon_name(self, taxon):
@@ -48,11 +46,10 @@ def parse_strains_file():
       order = parse_taxon_name(row[2], "o__")
       family = parse_taxon_name(row[3], "f__")
       genus = parse_taxon_name(row[4], "g__")
-      species = parse_taxon_name(row[5], "s__")
-      id = row[6]
-      abundances = [float(abundance) for abundance in row[7:]]
+      id = row[5]
+      abundances = [float(abundance) for abundance in row[6:]]
 
-      strain = Strain(id, phylum, class_, order, family, genus, species, abundances)
+      strain = Strain(id, phylum, class_, order, family, genus, abundances)
       strains.append(strain)
 
     return strains

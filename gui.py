@@ -1,6 +1,6 @@
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QSlider, QVBoxLayout, QWidget
-from PyQt5.QtCore import QSize, QTimer, Qt
+from PyQt5.QtCore import QTimer, Qt
 
 from os import path
 import sys

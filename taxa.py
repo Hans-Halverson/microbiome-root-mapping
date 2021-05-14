@@ -6,6 +6,5 @@ class Taxon(Enum):
   ORDER = 'Order'
   FAMILY = 'Family'
   GENUS = 'Genus'
-  SPECIES = 'Species'
 
-TAXA = [Taxon.PHYLUM, Taxon.CLASS, Taxon.ORDER, Taxon.FAMILY, Taxon.GENUS, Taxon.SPECIES]
+TAXA = [Taxon.PHYLUM, Taxon.CLASS, Taxon.ORDER, Taxon.FAMILY, Taxon.GENUS]
