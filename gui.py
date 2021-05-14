@@ -1,6 +1,6 @@
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QSlider, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QSize, Qt
 
 from os import path
 import sys
@@ -87,7 +87,7 @@ class Window(QWidget):
     # Create name input components
     self.taxa_selector = QComboBox()
     self.name_input = QLineEdit()
-    self.view_button = QPushButton("View")
+    self.view_button = QPushButton("Visualize")
 
     self.taxa_selector.addItems([taxon.value for taxon in TAXA] + [ASV_KEY])
     self.taxa_selector.setFixedWidth(TAXA_SELECTOR_WIDTH)
@@ -98,7 +98,8 @@ class Window(QWidget):
     self.name_input.setFixedWidth(NAME_INPUT_WIDTH)
     self.on_name_text_changed("")
 
-    self.view_button.setFixedWidth(BUTTON_WIDTH)
+    self.view_button.setFixedSize(QSize(BUTTON_WIDTH * 1.3, 42))
+    self.view_button.setFont(QtGui.QFont("Arial", 15))
     self.view_button.clicked.connect(self.on_view_button_clicked)
 
     # Create visualize input components
@@ -136,7 +137,6 @@ class Window(QWidget):
     name_inputs_hbox = QHBoxLayout()
     name_inputs_hbox.addWidget(self.taxa_selector)
     name_inputs_hbox.addWidget(self.name_input)
-    name_inputs_hbox.addWidget(self.view_button)
 
     # Group visualize inputs in middle
     visualize_inputs_hbox = QHBoxLayout()
@@ -160,7 +160,15 @@ class Window(QWidget):
     toolbar_hbox.addLayout(right_buttons_hbox)
     toolbar_hbox.setAlignment(Qt.AlignLeft)
 
-    return toolbar_hbox
+
+    visualize_hbox = QHBoxLayout()
+    visualize_hbox.addWidget(self.view_button)
+
+    toolbar_vbox = QVBoxLayout()
+    toolbar_vbox.addLayout(toolbar_hbox)
+    toolbar_vbox.addLayout(visualize_hbox)
+
+    return toolbar_vbox
 
   def build_init_preview(self):
     self.preview = QLabel()
