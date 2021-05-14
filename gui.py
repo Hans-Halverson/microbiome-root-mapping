@@ -1,6 +1,6 @@
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QSlider, QVBoxLayout, QWidget
-from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtCore import QSize, QTimer, Qt
 
 from os import path
 import sys
@@ -27,6 +27,8 @@ WINDOW_HEIGHT_PADDING = 110
 WINDOW_WIDTH = IMAGE_PREVIEW_WIDTH + WINDOW_WIDTH_PADDING
 WINDOW_HEIGHT = IMAGE_PREVIEW_HEIGHT + WINDOW_HEIGHT_PADDING
 
+RENDER_DEBOUNCE_TIMEOUT = 200
+
 class Window(QWidget):
   def __init__(self, app, all_strains, indexed_strains):
     super().__init__()
@@ -34,11 +36,17 @@ class Window(QWidget):
     self.app = app
     self.all_strains = all_strains
     self.indexed_strains = indexed_strains
-    self.current_viewed_strains = None
-    self.current_viewed_name = "image"
+    self.current_name = ""
+    self.current_taxon = TAXA[0]
     self.current_scale = 1000
     self.current_color = (255, 0, 0)
     self.hide_name = False
+
+    # Set up debounced rendering
+    self.render_debounce = QTimer()
+    self.render_debounce.setInterval(RENDER_DEBOUNCE_TIMEOUT)
+    self.render_debounce.setSingleShot(True)
+    self.render_debounce.timeout.connect(self.render_preview)
  
     self.setGeometry(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT)
     self.setWindowTitle(APP_NAME)
@@ -89,32 +97,33 @@ class Window(QWidget):
     # Create name input components
     self.taxa_selector = QComboBox()
     self.name_input = QLineEdit()
-    self.view_button = QPushButton("Visualize")
 
     self.taxa_selector.addItems([taxon.value for taxon in TAXA] + [ASV_KEY])
     self.taxa_selector.setFixedWidth(TAXA_SELECTOR_WIDTH)
     self.taxa_selector.currentIndexChanged.connect(self.on_change_selected_taxa)
-    self.on_change_selected_taxa(0)
 
     self.name_input.textChanged.connect(self.on_name_text_changed)
     self.name_input.setFixedWidth(NAME_INPUT_WIDTH)
+    self.name_input.setCompleter(self.name_input_completers[self.current_taxon])
     self.on_name_text_changed("")
 
-    self.view_button.setFixedSize(QSize(BUTTON_WIDTH * 1.3, 42))
-    self.view_button.setFont(QtGui.QFont("Arial", 10 if sys.platform == "win32" else 15))
-    self.view_button.clicked.connect(self.on_view_button_clicked)
-
     # Create visualize input components
+    scale_tooltip = "Scale for colors on image"
+    scale_label = QLabel("Scale:")
+    scale_label.setToolTip(scale_tooltip)
+
     self.scale_text_input = QLineEdit()
     self.scale_text_input.setText(str(self.current_scale))
     self.scale_text_input.setFixedWidth(40)
     self.scale_text_input.textEdited.connect(self.on_scale_text_input_edited)
+    self.scale_text_input.setToolTip(scale_tooltip)
 
     self.scale_slider = QSlider(Qt.Horizontal)
     self.scale_slider.setMinimum(1)
     self.scale_slider.setMaximum(5000)
     self.scale_slider.setValue(self.current_scale)
     self.scale_slider.valueChanged.connect(self.on_scale_slider_change)
+    self.scale_slider.setToolTip(scale_tooltip)
 
     self.choose_color_button = QPushButton("Choose Color")
     self.choose_color_button.setFixedWidth(BUTTON_WIDTH * 1.65)
@@ -142,7 +151,7 @@ class Window(QWidget):
 
     # Group visualize inputs in middle
     visualize_inputs_hbox = QHBoxLayout()
-    visualize_inputs_hbox.addWidget(QLabel("Scale:"))
+    visualize_inputs_hbox.addWidget(scale_label)
     visualize_inputs_hbox.addWidget(self.scale_text_input)
     visualize_inputs_hbox.addWidget(self.scale_slider)
     visualize_inputs_hbox.addWidget(self.choose_color_button)
@@ -162,20 +171,12 @@ class Window(QWidget):
     toolbar_hbox.addLayout(right_buttons_hbox)
     toolbar_hbox.setAlignment(Qt.AlignLeft)
 
-
-    visualize_hbox = QHBoxLayout()
-    visualize_hbox.addWidget(self.view_button)
-
-    toolbar_vbox = QVBoxLayout()
-    toolbar_vbox.addLayout(toolbar_hbox)
-    toolbar_vbox.addLayout(visualize_hbox)
-
-    return toolbar_vbox
+    return toolbar_hbox
 
   def build_init_preview(self):
     self.preview = QLabel()
     self.preview.setMinimumSize(1, 1)
-    self.render_preview([], [])
+    self.render_preview()
 
     return self.preview
 
@@ -184,45 +185,38 @@ class Window(QWidget):
     self.current_taxon = taxon
     self.name_input.clear()
     self.name_input.setCompleter(self.name_input_completers[taxon])
+    self.render_preview()
   
   def on_name_text_changed(self, name):
     self.current_name = name
     is_valid = name in self.indexed_strains[self.current_taxon]
     if is_valid:
-      self.view_button.setEnabled(True)
-      self.view_button.setToolTip("")
-    else:
-      self.view_button.setEnabled(False)
-      tooltip = "Input name of strain" if name == "" else f"No strains found with name \"{name}\""
-      self.view_button.setToolTip(tooltip)
-  
-  def on_view_button_clicked(self):
-    strains = self.indexed_strains[self.current_taxon][self.current_name]
-    self.current_viewed_strains = strains
-    self.current_viewed_name = self.current_name
+      self.render_preview()
 
-    # Find full taxonomic hierarchy
-    strain = strains[0]
-    if self.current_taxon == ASV_KEY:
-      first_missing_taxon = next(filter(lambda taxon: strain.get_taxon_name(taxon) is None, TAXA), None)
-      current_taxon_index = len(TAXA) - 1 if first_missing_taxon is None else TAXA.index(first_missing_taxon) - 1
+  def render_preview(self):
+    if self.current_name not in self.indexed_strains[self.current_taxon]:
+      strains = []
+      hierarchy = []
     else:
-      current_taxon_index = TAXA.index(self.current_taxon)
-    hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
+      strains = self.indexed_strains[self.current_taxon][self.current_name]
+      # Find full taxonomic hierarchy
+      strain = strains[0]
+      if self.current_taxon == ASV_KEY:
+        first_missing_taxon = next(filter(lambda taxon: strain.get_taxon_name(taxon) is None, TAXA), None)
+        current_taxon_index = len(TAXA) - 1 if first_missing_taxon is None else TAXA.index(first_missing_taxon) - 1
+      else:
+        current_taxon_index = TAXA.index(self.current_taxon)
+      hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
-    self.render_preview(strains, hierarchy)
-    
-  def render_preview(self, strains, hierarchy):
     self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
     self.qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
-    # pixmap = QtGui.QPixmap.fromImage(self.qt_image.smoothScaled(IMAGE_PREVIEW_WIDTH, IMAGE_PREVIEW_HEIGHT))
-    # self.preview.setPixmap(pixmap)
     self.resize_preview_image()
-
+  
   def on_scale_slider_change(self, scale):
     self.current_scale = scale
     self.scale_text_input.setText(str(scale))
+    self.render_debounce.start()
 
   def on_scale_text_input_edited(self, value):
     try:
@@ -238,6 +232,7 @@ class Window(QWidget):
     if color.isValid():
       self.current_color = (color.red(), color.green(), color.blue())
       self.update_choose_color_preview()
+      self.render_preview()
 
   def update_choose_color_preview(self):
     color_pixmap = QtGui.QPixmap(10, 10)
@@ -246,9 +241,10 @@ class Window(QWidget):
   
   def on_hide_name_checkbox_toggled(self, hide_name):
     self.hide_name = hide_name
+    self.render_preview()
 
   def on_save_button_clicked(self):
-    file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_viewed_name + ".png", "Images (*.png)")
+    file_name, _ = QFileDialog.getSaveFileName(self, "Save Image", self.current_name + ".png", "Images (*.png)")
     if file_name != "":
       try:
         self.current_image.save(file_name)
