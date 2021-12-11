@@ -1,9 +1,11 @@
 import csv
 from os import path
+from microbiome import Microbiome
 
 from taxa import TAXA, Taxon
 
-DATA_FILE_PATH = path.join(path.dirname(__file__), 'resources', 'Data_file_for_mapping.csv')
+ENDOSPHERE_DATA_FILE_PATH = path.join(path.dirname(__file__), 'resources', 'endosphere', 'data_file_for_mapping.csv')
+RHIZOSPHERE_DATA_FILE_PATH = path.join(path.dirname(__file__), 'resources', 'rhizosphere', 'data_file_for_mapping.csv')
 ASV_KEY = 'ASV'
 
 TAXA_GETTERS = {
@@ -33,8 +35,14 @@ def parse_taxon_name(name, prefix):
   
   return name[len(prefix):] if name.startswith(prefix) else name
 
-def parse_strains_file():
-  with open(DATA_FILE_PATH) as data_file:
+def parse_strains_files():
+  endosphere_strains = parse_strains_file(ENDOSPHERE_DATA_FILE_PATH)
+  rhizosphere_strains = parse_strains_file(RHIZOSPHERE_DATA_FILE_PATH)
+
+  return { Microbiome.ENDOSPHERE: endosphere_strains, Microbiome.RHIZOSPHERE: rhizosphere_strains }
+
+def parse_strains_file(file):
+  with open(file) as data_file:
     reader = csv.reader(data_file)
     # Skip first row which contains column labels
     next(reader)
@@ -54,8 +62,11 @@ def parse_strains_file():
 
     return strains
 
+def build_strains_indices(all_strains):
+  return { microbiome: build_strains_index(strains) for microbiome, strains in all_strains.items() }
+
 def build_strains_index(strains):
-  strains_index = {taxon:dict() for taxon in TAXA}
+  strains_index = { taxon:dict() for taxon in TAXA }
   strains_index[ASV_KEY] = dict()
 
   for strain in strains:

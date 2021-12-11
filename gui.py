@@ -1,10 +1,12 @@
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QSlider, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QButtonGroup, QCheckBox, QColorDialog, QComboBox, QCompleter, QErrorMessage, QFileDialog, QFrame, QLineEdit, QLabel, QHBoxLayout, QPushButton, QRadioButton, QSlider, QVBoxLayout, QWidget
 from PyQt5.QtCore import QTimer, Qt
 
+from enum import Enum
 from os import path
 import sys
 
+from microbiome import Microbiome
 from strains import ASV_KEY
 from taxa import TAXA, Taxon
 from visualize import IMAGE_HEIGHT, IMAGE_WIDTH, render_image
@@ -41,6 +43,7 @@ class Window(QWidget):
     self.indexed_strains = indexed_strains
     self.current_name = ""
     self.current_taxon = TAXA[0]
+    self.current_microbiome = Microbiome.ENDOSPHERE
     self.current_scale = 1000
     self.current_color = (255, 0, 0)
     self.hide_name = False
@@ -72,27 +75,30 @@ class Window(QWidget):
     self.show()
 
   def init_name_input_completers(self):
-    # Determine which strains should be displayed
-    strains_to_display = {taxon:set() for taxon in TAXA}
-    strains_to_display[ASV_KEY] = set()
-    for strain in self.all_strains:
-      if sum(strain.abundances) > ABUNDANCE_DISPLAY_THRESHOLD:
-        for taxon in TAXA:
-          name = strain.get_taxon_name(taxon)
-          if name is not None:
-            strains_to_display[taxon].add(strain.get_taxon_name(taxon))
-        strains_to_display[ASV_KEY].add(strain.id)
-    
     self.name_input_completers = dict()
-    for taxon, names in strains_to_display.items():
-      if taxon == ASV_KEY:
-        sorted_names = sorted(names, key=lambda name: int(name[4:]))
-      else:
-        sorted_names = sorted(names)
-      completer = QCompleter(sorted_names)
-      completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
-      completer.setMaxVisibleItems(20)
-      self.name_input_completers[taxon] = completer
+    for microbiome, strains in self.all_strains.items():
+      self.name_input_completers[microbiome] = dict()
+
+      # Determine which strains should be displayed
+      strains_to_display = {taxon:set() for taxon in TAXA}
+      strains_to_display[ASV_KEY] = set()
+      for strain in strains:
+        if sum(strain.abundances) > ABUNDANCE_DISPLAY_THRESHOLD:
+          for taxon in TAXA:
+            name = strain.get_taxon_name(taxon)
+            if name is not None:
+              strains_to_display[taxon].add(strain.get_taxon_name(taxon))
+          strains_to_display[ASV_KEY].add(strain.id)
+      
+      for taxon, names in strains_to_display.items():
+        if taxon == ASV_KEY:
+          sorted_names = sorted(names, key=lambda name: int(name[4:]))
+        else:
+          sorted_names = sorted(names)
+        completer = QCompleter(sorted_names)
+        completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+        completer.setMaxVisibleItems(20)
+        self.name_input_completers[microbiome][taxon] = completer
   
   def build_toolbar(self):
     # Create name input components
@@ -105,9 +111,19 @@ class Window(QWidget):
 
     self.name_input.textChanged.connect(self.on_name_text_changed)
     self.name_input.setFixedWidth(NAME_INPUT_WIDTH)
-    self.name_input.setCompleter(self.name_input_completers[self.current_taxon])
+    self.name_input.setCompleter(self.name_input_completers[self.current_microbiome][self.current_taxon])
     self.name_input.setToolTip("Search for phlyum to display")
     self.on_name_text_changed("")
+
+    # Create microbiome radio buttons
+    endosphere_button = QRadioButton(Microbiome.ENDOSPHERE.value)
+    endosphere_button.setChecked(True)
+    endosphere_button.toggled.connect(self.on_microbiome_changed)
+    rhizosphere_button = QRadioButton(Microbiome.RHIZOSPHERE.value)
+
+    microbiome_button_group = QButtonGroup()
+    microbiome_button_group.addButton(endosphere_button)
+    microbiome_button_group.addButton(rhizosphere_button)
 
     # Create visualize input components
     scale_tooltip = "Scale for colors on image"
@@ -151,6 +167,11 @@ class Window(QWidget):
     name_inputs_hbox.addWidget(self.taxa_selector)
     name_inputs_hbox.addWidget(self.name_input)
 
+    # Group microbiome radio buttons on left
+    microbiome_buttons_hbox = QHBoxLayout()
+    microbiome_buttons_hbox.addWidget(endosphere_button)
+    microbiome_buttons_hbox.addWidget(rhizosphere_button)
+
     # Group visualize inputs in middle
     visualize_inputs_hbox = QHBoxLayout()
     visualize_inputs_hbox.addWidget(scale_label)
@@ -167,6 +188,8 @@ class Window(QWidget):
     # Add inputs and right buttons to toolbar component
     toolbar_hbox = QHBoxLayout()
     toolbar_hbox.addLayout(name_inputs_hbox)
+    toolbar_hbox.addStretch()
+    toolbar_hbox.addLayout(microbiome_buttons_hbox)
     toolbar_hbox.addStretch()
     toolbar_hbox.addLayout(visualize_inputs_hbox)
     toolbar_hbox.addStretch()
@@ -186,22 +209,27 @@ class Window(QWidget):
     taxon = TAXA[i] if i < ASV_SELECTOR_INDEX else ASV_KEY
     self.current_taxon = taxon
     self.name_input.clear()
-    self.name_input.setCompleter(self.name_input_completers[taxon])
+    self.name_input.setCompleter(self.name_input_completers[self.current_microbiome][taxon])
     self.name_input.setToolTip(f"Search for {'ASV' if taxon == ASV_KEY else taxon.value.lower()} to display")
     self.render_preview()
   
   def on_name_text_changed(self, name):
     self.current_name = name
-    is_valid = name in self.indexed_strains[self.current_taxon]
+    is_valid = name in self.indexed_strains[self.current_microbiome][self.current_taxon]
     if is_valid:
       self.render_preview()
+  
+  def on_microbiome_changed(self, is_endosphere):
+    self.current_microbiome = Microbiome.ENDOSPHERE if is_endosphere else Microbiome.RHIZOSPHERE
+    self.name_input.setCompleter(self.name_input_completers[self.current_microbiome][self.current_taxon])
+    self.render_preview()    
 
   def render_preview(self):
-    if self.current_name not in self.indexed_strains[self.current_taxon]:
+    if self.current_name not in self.indexed_strains[self.current_microbiome][self.current_taxon]:
       strains = []
       hierarchy = []
     else:
-      strains = self.indexed_strains[self.current_taxon][self.current_name]
+      strains = self.indexed_strains[self.current_microbiome][self.current_taxon][self.current_name]
       # Find full taxonomic hierarchy
       strain = strains[0]
       if self.current_taxon == ASV_KEY:
@@ -211,7 +239,7 @@ class Window(QWidget):
         current_taxon_index = TAXA.index(self.current_taxon)
       hierarchy = [strain.get_taxon_name(TAXA[i]) for i in range(current_taxon_index + 1)]
 
-    self.current_image = render_image(strains, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
+    self.current_image = render_image(strains, self.current_microbiome, [] if self.hide_name else hierarchy, self.current_color, self.current_scale)
     image_bytes = self.current_image.tobytes("raw", "BGRA")
     self.qt_image = QtGui.QImage(image_bytes, IMAGE_WIDTH, IMAGE_HEIGHT, QtGui.QImage.Format_ARGB32)
     self.resize_preview_image()
